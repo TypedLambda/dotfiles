@@ -133,7 +133,14 @@ URxvt.font: xft:Bitstream Vera Sans Mono:size=11
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.scrollBar_floating: false
-URxvt.scrollstyle: rxvt
+URxvt.scrollstyle: plain
+URxvt.urgentBell: true
+URxvt.visualBell: true
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+URxvt.shading: 95
+
+
+
 
 
 Xft.dpi:        96

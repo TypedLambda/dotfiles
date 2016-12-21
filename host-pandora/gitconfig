@@ -3,3 +3,9 @@
 # Please adapt and uncomment the following lines:
 	name = Arne Ehrlich
 	email = ehrlich@consider-it.de
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
