@@ -1,0 +1,262 @@
+# i3 config file (v4)
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+
+set $smallfont pango:Noto Sans 8
+set $largefont pango:Noto Sans Mono 11
+
+font $smallfont
+
+set $up k
+set $down j
+set $left h
+set $right l
+set $mod Mod4
+set $alt Mod4
+
+
+#colors
+client.focused			       #315858  #315858  #111111
+#client.focused			        #bf3f34  #bf3f34   #bf3f34
+client.unfocused		                #2c2e2f  #2c2e2f  #315858
+client.focused_inactive	        #2c2e2f #2c2e2f  #2c2e2f
+client.urgent			              #383a3b #383a3b  #ee0000 
+
+bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
+bindsym $mod+Shift+m unmark 
+bindsym $mod+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+#use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+w kill
+
+# start dmenu (a program launcher)
+bindsym $mod+Shift+i exec dmenu_run
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+i exec rofi -show run 
+bindsym $mod+d exec rofi -show drun 
+bindsym $mod+Ctrl+Tab exec rofi -show window 
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+z split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+n layout default
+bindsym $mod+t layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# switch to workspace
+bindsym $mod+F1 workspace F1
+bindsym $mod+F2 workspace F2
+bindsym $mod+F3 workspace F3
+bindsym $mod+F4 workspace F4
+bindsym $mod+F5 workspace F5
+bindsym $mod+F6 workspace F6
+bindsym $mod+F7 workspace F7
+bindsym $mod+F8 workspace F8
+bindsym $mod+F9 workspace F9
+bindsym $mod+F0 workspace F10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+F1 move container to workspace F1
+bindsym $mod+Shift+F2 move container to workspace F2
+bindsym $mod+Shift+F3 move container to workspace F3
+bindsym $mod+Shift+F4 move container to workspace F4
+bindsym $mod+Shift+F5 move container to workspace F5
+bindsym $mod+Shift+F6 move container to workspace F6
+bindsym $mod+Shift+F7 move container to workspace F7
+bindsym $mod+Shift+F8 move container to workspace F8
+bindsym $mod+Shift+F9 move container to workspace F9
+bindsym $mod+Shift+F0 move container to workspace F10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        font $largefont
+        position top
+}
+
+# mouse config
+floating_modifier $mod
+
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right
+
+
+# next/previous workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+#printscreen
+bindsym Print exec lumina-screenshot
+
+for_window [window_role="pop-up"] floating enable
+for_window [title="Calculator"] floating enable
+for_window [title="Calculator"] border 1pixel
+for_window [instance="lumina-screenshot"] floating enable
+for_window [instance="pc-wificonfig"] floating enable
+for_window [class="Wine" instance="1Password.exe" ] exec "xdotool search --onlyvisible --classname 1Password.exe | xargs -n 1 xwininfo -id | awk '/has no name/{print $4}' | xargs xdotool windowunmap"
+for_window [class="sysadm-client"] floating enable
+for_window [window_role="pop-up"] floating enable:t
+for_window [window_role="task_dialog"] floating enable
+
+
+#float windows on Fn workspaces
+for_window [workspace="^F[0-9]"] floating enable mark _tiling 
+for_window [workspace="^[0-9]" con_mark="_tiling" ] floating disable unmark _tiling
+
+
+bindsym $mod+Pause exec i3lock -d -c 000000
+
+##Program Startup 
+
+# tray applets
+exec --no-startup-id pc-mixer
+exec --no-startup-id pc-nettray
+exec --no-startup-id pc-mounttray
+exec --no-startup-id sysadm-client
+
+# keyboard and mause setting, swaps some keys!
+# exec_always --no-startup-id setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin' 
+# exec_always --no-startup-id xset m 1 1/1 
+
+#tracker file search
+bindsym $mod+control+space exec tracker-needle 
+for_window [instance="tracker-needle"] floating enable
+#bindsym Escape [instance="tracker-needle"] kill
+
+for_window [instance="^crx_"] floating disable
+assign [instance="jeogkiiogjbmhklcnbgkdcjoioegiknm"] 10
+assign [class="Thunderbird"] 9
+exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
+exec --no-startup-id thunderbird
+
+# urxvt deamon and use the client as default terminal
+#exec --no-startup-id urxvtd  
+bindsym $mod+Return exec urxvtc
+

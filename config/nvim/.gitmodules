@@ -1,0 +1,189 @@
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "bundle/vim-textobj-indent"]
+	path = bundle/vim-textobj-indent
+	url = https://github.com/kana/vim-textobj-indent
+[submodule "bundle/vim-textobj-line"]
+	path = bundle/vim-textobj-line
+	url = https://github.com/kana/vim-textobj-line
+[submodule "bundle/vim-textobj-syntax"]
+	path = bundle/vim-textobj-syntax
+	url = https://github.com/kana/vim-textobj-syntax
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "bundle/vim-startify"]
+	path = bundle/vim-startify
+	url = https://github.com/mhinz/vim-startify
+[submodule "bundle/vim-qargs"]
+	path = bundle/vim-qargs
+	url = https://github.com/nelstrom/vim-qargs
+[submodule "bundle/gundo.vim"]
+	path = bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim
+[submodule "bundle/vim-exchange"]
+	path = bundle/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "bundle/vim-visual-star-search"]
+	path = bundle/vim-visual-star-search
+	url = https://github.com/nelstrom/vim-visual-star-search
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule "bundle/vim-scriptease"]
+	path = bundle/vim-scriptease
+	url = https://github.com/tpope/vim-scriptease
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "bundle/vim-rooter"]
+	path = bundle/vim-rooter
+	url = https://github.com/airblade/vim-rooter
+[submodule "bundle/textobj-gitgutter"]
+	path = bundle/textobj-gitgutter
+	url = https://github.com/gilligan/textobj-gitgutter
+[submodule "bundle/vim-merginal"]
+	path = bundle/vim-merginal
+	url = https://github.com/idanarye/vim-merginal
+[submodule "bundle/vim-ctrlp-tjump"]
+	path = bundle/vim-ctrlp-tjump
+	url = https://github.com/ivalkeen/vim-ctrlp-tjump
+[submodule "bundle/git_shade.vim"]
+	path = bundle/git_shade.vim
+	url = https://github.com/joeytwiddle/git_shade.vim
+[submodule "bundle/vim-smartchr"]
+	path = bundle/vim-smartchr
+	url = https://github.com/kana/vim-smartchr
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "bundle/vim-indent-guides"]
+	path = bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "bundle/vim-yankstack"]
+	path = bundle/vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack
+[submodule "bundle/clever-f.vim"]
+	path = bundle/clever-f.vim
+	url = https://github.com/rhysd/clever-f.vim
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "bundle/vim-polyglot"]
+	path = bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "bundle/vim-css-color"]
+	path = bundle/vim-css-color
+	url = https://github.com/skammer/vim-css-color
+[submodule "bundle/vim-characterize"]
+	path = bundle/vim-characterize
+	url = https://github.com/tpope/vim-characterize
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "bundle/vim-endwise"]
+	path = bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/vim-jdaddy"]
+	path = bundle/vim-jdaddy
+	url = https://github.com/tpope/vim-jdaddy
+[submodule "bundle/vim-ragtag"]
+	path = bundle/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag
+[submodule "bundle/incsearch.vim"]
+	path = bundle/incsearch.vim
+	url = https://github.com/haya14busa/incsearch.vim
+[submodule "bundle/vim-eightheader"]
+	path = bundle/vim-eightheader
+	url = https://github.com/BimbaLaszlo/vim-eightheader
+[submodule "bundle/vim-fontdetect"]
+	path = bundle/vim-fontdetect
+	url = https://github.com/drmikehenry/vim-fontdetect/
+[submodule "bundle/vim-lua-ftplugin"]
+	path = bundle/vim-lua-ftplugin
+	url = https://github.com/xolox/vim-lua-ftplugin
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = https://github.com/xolox/vim-misc
+[submodule "bundle/vim-easytags"]
+	path = bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags
+[submodule "bundle/vim-lua-inspect"]
+	path = bundle/vim-lua-inspect
+	url = https://github.com/xolox/vim-lua-inspect
+[submodule "bundle/tlib_vim"]
+	path = bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/vim-snipmate"]
+	path = bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "bundle/vim-git"]
+	path = bundle/vim-git
+	url = https://github.com/tpope/vim-git
+[submodule "bundle/vim-orgmode"]
+	path = bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode
+[submodule "bundle/vim-speeddating"]
+	path = bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = https://github.com/tpope/vim-coffee-script
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
+[submodule "bundle/RootIgnore"]
+	path = bundle/RootIgnore
+	url = https://github.com/octref/RootIgnore
+[submodule "bundle/smartpairs.vim"]
+	path = bundle/smartpairs.vim
+	url = https://github.com/gorkunov/smartpairs.vim.git
+[submodule "bundle/vim-smartinput"]
+	path = bundle/vim-smartinput
+	url = https://github.com/kana/vim-smartinput.git
+[submodule "bundle/vim-enmasse"]
+	path = bundle/vim-enmasse
+	url = https://github.com/Wolfy87/vim-enmasse.git
+[submodule "bundle/vim-pandoc"]
+	path = bundle/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule "bundle/vim-pandoc-syntax"]
+	path = bundle/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
