@@ -134,7 +134,7 @@ URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.scrollBar_floating: false
 URxvt.scrollstyle: plain
-URxvt.urgentBell: true
+URxvt.urgentOnBell: true
 URxvt.visualBell: true
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt.shading: 95

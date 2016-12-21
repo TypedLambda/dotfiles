@@ -237,9 +237,10 @@ bindsym $mod+Pause exec i3lock -d -c 000000
 
 # tray applets
 exec --no-startup-id pc-mixer
-exec --no-startup-id pc-nettray
+# exec --no-startup-id pc-nettray
 exec --no-startup-id pc-mounttray
 exec --no-startup-id sysadm-client
+exec --no-startup-id dunst -fn $smallfont 
 
 # keyboard and mause setting, swaps some keys!
 # exec_always --no-startup-id setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin' 
@@ -253,8 +254,9 @@ for_window [instance="tracker-needle"] floating enable
 for_window [instance="^crx_"] floating disable
 assign [instance="jeogkiiogjbmhklcnbgkdcjoioegiknm"] 10
 assign [class="Thunderbird"] 9
-exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
-exec --no-startup-id thunderbird
+# exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
+exec epiphany --application-mode --profile="/usr/home/arne/.config/epiphany/app-epiphany-slack-430b38bf6daa7f9164b164b2ffd540b5a3afe2fd" https://consider-it-rd.slack.com/messages/general/
+exec thunderbird
 
 # urxvt deamon and use the client as default terminal
 #exec --no-startup-id urxvtd  
