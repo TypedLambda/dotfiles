@@ -1,2 +1,5 @@
+
+TAGS="bsd"
 UNDOTTED="bin"
+SYMLINK_DIRS="zsh-syntax-highlighting"
 
