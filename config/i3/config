@@ -3,8 +3,10 @@
 # is used in the bar {} block below.
 # font pango:monospace 8
 
-set $smallfont pango:Noto Sans 8
-set $largefont pango:Noto Sans Mono 11
+#set $smallfont pango:Noto Sans 8
+#set $largefont pango:Noto Sans Mono 11
+set $smallfont xft:Noto Sans:size=8
+set $largefont xft:Noto Sans Mono:size=10
 
 font $smallfont
 
@@ -37,11 +39,11 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal
 bindsym $mod+Shift+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+i exec dmenu_run
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+i exec rofi -show run 
-bindsym $mod+d exec rofi -show drun 
-bindsym $mod+Ctrl+Tab exec rofi -show window 
+bindsym $mod+i exec dmenu_run -fn "$largefont" 
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "$largefont"' 
+#bindsym $mod+i exec rofi -show run -fn "$largefont" 
+#bindsym $mod+d exec rofi -show drun -fn "$largefont" 
+bindsym $mod+Ctrl+Tab exec rofi -show window -fn "$largefont" 
 
 # change focus
 bindsym $mod+$left focus left

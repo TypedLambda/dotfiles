@@ -1,6 +1,7 @@
 # TitleBar setting
+
 case $TERM in
-  ( xterm* | rxvt*)
+  xterm* | rxvt*)
     function set_running_app { printf "\e]1; $PWD:t:$(history $HISTCMD | cut -b7- ) \a" }
     function set_title_tab   {
       # vcs_info
@@ -11,24 +12,18 @@ case $TERM in
       echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
     }
     ;;
-  (*)
-    function set_running_app {}
+  *)
+    function set_runnung_app {}
     function set_title_tab {}
+    ;;
 esac
-
-    function preexec { set_running_app }
-    function postexec { set_running_app }
-    function precmd {}
-
-
-
 
 function preexec {
     # Note the date when the command started, in unix time.
     CMD_START_DATE=$(date +%s)
     # Store the command that we're running.
     CMD_NAME=$1
-    set_running_app 
+#   set_running_app 
 }
 
 function postexec { set_running_app }

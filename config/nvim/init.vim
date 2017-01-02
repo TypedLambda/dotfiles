@@ -14,6 +14,8 @@ else
     let s:vimpath=expand('~/.config/nvim/')
 endif
 
+runtime Man.vim
+
 call plug#begin("~/.local/share/nvim/plugged")
 
 Plug 'altercation/vim-colors-solarized'   " color theme

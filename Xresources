@@ -128,7 +128,8 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.letterSpace: -1
-URxvt.font: xft:Bitstream Vera Sans Mono:size=11
+URxvt.font: xft:bitstream vera sans mono:size=16:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
 
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
@@ -139,14 +140,13 @@ URxvt.visualBell: true
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt.shading: 95
 
-
-
-
-
-Xft.dpi:        96
-Xft.antialias:  true
+Xft.dpi:        141
+Xft.autohint:   0
+Xft.antialias:  1
 Xft.rgba:       rgb
-Xft.hinting:    true
+Xft.hinting:    1
 Xft.hintstyle:  hintslight
-Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
+
+Xcursor.size: 32
+
