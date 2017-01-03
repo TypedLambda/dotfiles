@@ -1,5 +1,5 @@
 # Setup some extra PATH variables
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HOME/bin; export PATH
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HOME/bin:$HOME/.cargo/bin; export PATH
 
 XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share:/usr/local/share"
 export XDG_DATA_DIRS
@@ -49,16 +49,12 @@ export VISUAL
 # remap some keys
 setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3:ralt_switch' 
 
-
-
 # mouse acceleration is handled by moused, set flat profile
 xset m 1 1/1 
-
 
 # deamons
 pulseaudio --start
 urxvtd -q -f -o 
-
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 

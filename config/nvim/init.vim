@@ -74,6 +74,8 @@ Plug 'lybrown/vim-pasm'
 Plug 'elixir-lang/vim-elixir'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'            " alignment as with tabularise, but as a normal mode command 'ga'
+Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
 
 call plug#end()
 
