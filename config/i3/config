@@ -257,8 +257,9 @@ for_window [instance="^crx_"] floating disable
 assign [instance="jeogkiiogjbmhklcnbgkdcjoioegiknm"] 10
 assign [class="Thunderbird"] 9
 # exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
-exec epiphany --application-mode --profile="/usr/home/arne/.config/epiphany/app-epiphany-slack-430b38bf6daa7f9164b164b2ffd540b5a3afe2fd" https://consider-it-rd.slack.com/messages/general/
-exec thunderbird
+
+exec compton --config ~/.config/i3/compton.conf
+
 
 # urxvt deamon and use the client as default terminal
 #exec --no-startup-id urxvtd  

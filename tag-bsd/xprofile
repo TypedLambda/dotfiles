@@ -49,10 +49,16 @@ export VISUAL
 # remap some keys
 setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3:ralt_switch' 
 
+
+
 # mouse acceleration is handled by moused, set flat profile
 xset m 1 1/1 
+
+
+# deamons
 pulseaudio --start
 urxvtd -q -f -o 
+
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
