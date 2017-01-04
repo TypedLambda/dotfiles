@@ -44,6 +44,8 @@ function precmd {
             # Send a notification
             notify-send 'Job finished' "\"$CMD_NAME\" has finished."
         fi
+        CMD_START_DATE=""
+        CMD_NAME=""
     fi
     set_title_tab
 }
