@@ -1,7 +1,7 @@
 # TitleBar setting
 
 case $TERM in
-  xterm* | rxvt*)
+  xterm* | rxvt*| screen*)
     function set_running_app { printf "\e]1; $PWD:t:$(history $HISTCMD | cut -b7- ) \a" }
     function set_title_tab   {
       # vcs_info

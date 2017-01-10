@@ -239,10 +239,10 @@ bindsym $mod+Pause exec i3lock -d -c 000000
 
 # tray applets
 exec --no-startup-id pc-mixer
-# exec --no-startup-id pc-nettray
 exec --no-startup-id pc-mounttray
 exec --no-startup-id sysadm-client
 exec --no-startup-id dunst -fn $smallfont 
+exec --no-startup-id pc-nettray wlan0
 
 # keyboard and mause setting, swaps some keys!
 # exec_always --no-startup-id setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin' 
@@ -258,7 +258,7 @@ assign [instance="jeogkiiogjbmhklcnbgkdcjoioegiknm"] 10
 assign [class="Thunderbird"] 9
 # exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
 
-exec compton --config ~/.config/i3/compton.conf
+exec --no-startup-id compton --config ~/.config/i3/compton.conf
 
 
 # urxvt deamon and use the client as default terminal

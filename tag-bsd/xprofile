@@ -53,10 +53,13 @@ setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3
 xset m 1 1/1 
 
 # deamons
-pulseaudio --start
-urxvtd -q -f -o 
+if pusleaudio --check ; then
+	pulseaudio --kill
+fi
+pulseaudio --start &
+
+pgrep urxvtd || urxvtd -q -f -o 
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
-
 

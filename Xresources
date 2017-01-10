@@ -33,7 +33,7 @@
 
 ! Default to dark background if neither constant is defined, or if both are.
 #if !defined(SOLARIZED_LIGHT) && !defined(SOLARIZED_DARK)
-#define SOLARIZED_DARK
+#define SOLARIZED_LIGHT
 #elif defined(SOLARIZED_LIGHT) && defined(SOLARIZED_DARK)
 #undef SOLARIZED_LIGHT
 #endif
@@ -75,6 +75,24 @@
   #define S_base2       S_rebase2
   #define S_base3       S_rebase3
 #endif
+
+#define SL_base03      S_rebase3
+#define SL_base02      S_rebase2
+#define SL_base01      S_rebase1
+#define SL_base00      S_rebase0
+#define SL_base0       S_rebase00
+#define SL_base1       S_rebase01
+#define SL_base2       S_rebase02
+#define SL_base3       S_rebase03
+
+#define SD_base03      S_rebase03
+#define SD_base02      S_rebase02
+#define SD_base01      S_rebase01
+#define SD_base00      S_rebase00
+#define SD_base0       S_rebase0
+#define SD_base1       S_rebase1
+#define SD_base2       S_rebase2
+#define SD_base3       S_rebase3
 
 *background:            S_base03
 *foreground:            S_base00
@@ -139,6 +157,47 @@ URxvt.urgentOnBell: true
 URxvt.visualBell: true
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt.shading: 95
+
+URxvt.background:            SD_base03
+URxvt.foreground:            SD_base00
+URxvt.fading:                40
+URxvt.fadeColor:             SD_base03
+URxvt.cursorColor:           SD_base1
+URxvt.pointerColorBackground:SD_base01
+URxvt.pointerColorForeground:SD_base1
+
+!! black dark/light
+URxvt.color0:                SD_base02
+URxvt.color8:                SD_base03
+
+!! red dark/light
+URxvt.color1:                S_red
+URxvt.color9:                S_orange
+
+!! green dark/light
+URxvt.color2:                S_green
+URxvt.color10:               SD_base01
+
+!! yellow dark/light
+URxvt.color3:                S_yellow
+URxvt.color11:               SD_base00
+
+!! blue dark/light
+URxvt.color4:                S_blue
+URxvt.color12:               SD_base0
+
+!! magenta dark/light
+URxvt.color5:                S_magenta
+URxvt.color13:               S_violet
+
+!! cyan dark/light
+URxvt.color6:                S_cyan
+URxvt.color14:               SD_base1
+
+!! white dark/light
+URxvt.color7:                SD_base2
+URxvt.color15:               SD_base3
+
 
 Xft.dpi:        141
 Xft.autohint:   0
