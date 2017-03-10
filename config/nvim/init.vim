@@ -14,13 +14,14 @@ else
     let s:vimpath=expand('~/.config/nvim/')
 endif
 
-runtime Man.vim
 
-call plug#begin("~/.local/share/nvim/plugged")
+let g:plugin_dir="~/.local/share/nvim/plugged"
+call plug#begin(g:plugin_dir)
 
 Plug 'altercation/vim-colors-solarized'   " color theme
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " complition engine
-Plug 'awetzel/elixir.nvim'                " elixir complition
+Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
+" Plug 'ervandew/supertab'
 Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
 Plug 'Shougo/neco-vim'                    " vimL completion
@@ -49,7 +50,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'arakashic/chromatica.nvim'          " clang syntax highlite
 Plug 'zchee/deoplete-clang'               " clang completion
 Plug 'tmux-plugins/vim-tmux-focus-events' " tmux focus event fix
 Plug 'roxma/vim-tmux-clipboard'           " tmux clipboard usage
@@ -72,15 +72,27 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'lybrown/vim-pasm'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'            " alignment as with tabularise, but as a normal mode command 'ga'
 Plug 'rust-lang/rust.vim'
 Plug 'sebastianmarkow/deoplete-rust'
+" Plug 'mattreduce/vim-mix'
+Plug 'tomlion/vim-solidity'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'avdgaag/vim-phoenix'
+Plug 'tpope/vim-projectionist'
+
 
 call plug#end()
-
 syntax on
 filetype plugin indent on
+
+runtime Man.vim
+
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
@@ -112,6 +124,8 @@ set softtabstop=4
 set foldcolumn=4
 set smartcase
 set ignorecase
+set completeopt=longest,menuone,preview
+
 
 if version >= 704
     set softtabstop=-1
@@ -208,3 +222,10 @@ let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.dylib"
 let g:chromatica#libclang_path=s:llvmdir."lib/libclang.dylib"
 let g:deoplete#sources#clang#clang_header  = s:llvmdir."lib/clang"
 end
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsEnableSnipMate = 0
+" .local/share/nvim/plugged/vim-snippets/UltiSnips
+let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips'] 
