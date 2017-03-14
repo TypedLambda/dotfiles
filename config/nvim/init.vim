@@ -26,7 +26,6 @@ Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
 Plug 'Shougo/neco-vim'                    " vimL completion
 Plug 'Shougo/neopairs.vim'                " close complietion pairs
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
