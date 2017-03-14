@@ -19,6 +19,7 @@ let g:plugin_dir="~/.local/share/nvim/plugged"
 call plug#begin(g:plugin_dir)
 
 Plug 'altercation/vim-colors-solarized'   " color theme
+Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " complition engine
 Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
 " Plug 'ervandew/supertab'
@@ -84,6 +85,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
+Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_cache_dir = '~/.tags_cache'
 
 
 call plug#end()
@@ -201,6 +204,8 @@ augroup vimrc
                     \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$'
                     \|   nnoremap <buffer> .. :edit %:h<CR>
                     \| endif
+        autocmd! BufWritePost * Neomake
+
 augroup END
 
 let g:ctrlp_tjump_only_silent = 1
@@ -228,3 +233,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " let g:UltiSnipsEnableSnipMate = 0
 " .local/share/nvim/plugged/vim-snippets/UltiSnips
 let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips'] 
+let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+
