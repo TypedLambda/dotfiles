@@ -170,6 +170,8 @@ nmap     S  :%s/\v/g<LEFT><LEFT>
 vmap     S  :s/\v/g<LEFT><LEFT>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+nmap <silent><cr> :nohls<cr>
+
 nmap <silent><leader>p <Plug>yankstack_substitute_older_paste
 nmap <silent><leader>P <Plug>yankstack_substitute_newer_paste
 
