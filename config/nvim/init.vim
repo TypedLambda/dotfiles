@@ -21,7 +21,7 @@ call plug#begin(g:plugin_dir)
 Plug 'altercation/vim-colors-solarized'   " color theme
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " complition engine
-Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
+" Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
 " Plug 'ervandew/supertab'
 Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
@@ -50,7 +50,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'zchee/deoplete-clang'               " clang completion
+" Plug 'zchee/deoplete-clang'               " clang completion
+Plug 'tweekmonster/deoplete-clang2'               " clang completion
 Plug 'tmux-plugins/vim-tmux-focus-events' " tmux focus event fix
 Plug 'roxma/vim-tmux-clipboard'           " tmux clipboard usage
 Plug 'godlygeek/tabular'
@@ -86,6 +87,10 @@ Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'CoatiSoftware/vim-coati'
+Plug 'Shougo/neoinclude.vim'
+
+
 let g:gutentags_cache_dir = '~/.tags_cache'
 
 
@@ -223,11 +228,25 @@ map  y  <Plug>(operator-flashy)
 nmap Y  <Plug>(operator-flashy)$
 
 if has("mac") 
-let s:llvmdir = glob("/usr/local/Cellar/llvm/*/",1,1)[0]
-let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.dylib"
-let g:chromatica#libclang_path=s:llvmdir."lib/libclang.dylib"
-let g:deoplete#sources#clang#clang_header  = s:llvmdir."lib/clang"
-end
+    let s:llvmdir = glob("/usr/local/Cellar/llvm/*/",1,1)[0]
+    let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.dylib"
+    let g:chromatica#libclang_path=s:llvmdir."lib/libclang.dylib"
+    let g:deoplete#sources#clang#clang_header  = s:llvmdir."lib/clang"
+elseif has("unix")
+  let s:uname = system("uname -s")
+  if s:uname =~ "Linux"
+    let s:llvmdir = "/usr/lib/llvm-3.8/"
+    let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.so"
+    let g:chromatica#libclang_path=s:llvmdir."lib/libclang.so"
+    let g:deoplete#sources#clang#clang_header  = s:llvmdir."include"
+  endif
+endif
+
+
+if executable("erl")
+    let s:erlang_path = system("erl -eval 'io:format(\"~s\", [lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version), \"/include\"])])' -s init stop -noshell")
+    let g:deoplete#sources#clang#flags = ['-I'.s:erlang_path.'']
+endif
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"

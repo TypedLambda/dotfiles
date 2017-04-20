@@ -11,6 +11,7 @@ export XDG_CONFIG_DIRS
 xrdb ~/.Xresources
 
 # Check for any specific TrueOS apps we need to start at login
+if [ -d /usr/local/share/trueos/xstartup/ ] ; then
 for i in $(ls /usr/local/share/trueos/xstartup/*.sh)
 do
 	# Run some task in the background to run in parallel
@@ -24,7 +25,7 @@ do
 		fi
 	fi
 done
-
+fi
 # Fix an issue with large image rendering via mozilla
 export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
@@ -53,12 +54,14 @@ setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3
 xset m 1 1/1 
 
 # deamons
-if pusleaudio --check ; then
-	pulseaudio --kill
-fi
-pulseaudio --start &
+# if pusleaudio --check ; then
+	# pulseaudio --kill
+# fi
+# pulseaudio --start &
 
-pgrep urxvtd || urxvtd -q -f -o 
+if which urxvtd ; then
+pgrep -u "$USER" urxvtd || urxvtd -q -f -o 
+fi
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
