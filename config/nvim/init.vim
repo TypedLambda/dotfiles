@@ -87,7 +87,7 @@ Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'CoatiSoftware/vim-coati'
+Plug 'CoatiSoftware/vim-sourcetrail'
 Plug 'Shougo/neoinclude.vim'
 
 

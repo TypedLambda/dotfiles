@@ -263,5 +263,5 @@ exec --no-startup-id compton --config ~/.config/i3/compton.conf
 
 # urxvt deamon and use the client as default terminal
 #exec --no-startup-id urxvtd  
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec urxvt
 

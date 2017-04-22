@@ -59,9 +59,9 @@ xset m 1 1/1
 # fi
 # pulseaudio --start &
 
-if which urxvtd ; then
-pgrep -u "$USER" urxvtd || urxvtd -q -f -o 
-fi
+#if which urxvtd ; then
+#pgrep -u "$USER" urxvtd || urxvtd -q -f -o 
+#fi
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
