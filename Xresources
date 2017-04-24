@@ -161,6 +161,10 @@ URxvt.urgentOnBell: true
 URxvt.visualBell: true
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 
+! Turn on/off double-buffering for xft (default enabled).
+! if turned on, there are compton compositor slowdowns.
+URxvt*buffered: false
+
 URxvt.background:            SD_base03
 URxvt.foreground:            SD_base00
 
@@ -171,6 +175,8 @@ URxvt.fadeColor:             SD_base03
 URxvt.cursorColor:           SD_base1
 URxvt.pointerColorBackground:SD_base01
 URxvt.pointerColorForeground:SD_base1
+
+
 
 !! black dark/light
 URxvt.color0:                SD_base02
