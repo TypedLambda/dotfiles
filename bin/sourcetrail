@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case `uname` in
+    'FreeBSD')
+        export QT_XKB_CONFIG_ROOT=/usr/local/share/X11/xkb
+        exec /compat/linux/bin/bash ~/Apps/Sourcetrail/Sourcetrail.sh
+        ;;
+    'Linux')
+        exec  ~/Apps/Sourcetrail/Sourcetrail.sh
+        ;;
+esac
