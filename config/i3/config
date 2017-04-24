@@ -224,6 +224,7 @@ for_window [instance="lumina-screenshot"] floating enable
 for_window [instance="pc-wificonfig"] floating enable
 for_window [class="Wine" instance="1Password.exe" ] exec "xdotool search --onlyvisible --classname 1Password.exe | xargs -n 1 xwininfo -id | awk '/has no name/{print $4}' | xargs xdotool windowunmap"
 for_window [class="sysadm-client"] floating enable
+for_window [class="VirtualBox"] floating enable
 for_window [window_role="pop-up"] floating enable:t
 for_window [window_role="task_dialog"] floating enable
 
@@ -258,7 +259,8 @@ assign [instance="jeogkiiogjbmhklcnbgkdcjoioegiknm"] 10
 assign [class="Thunderbird"] 9
 # exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
 
-exec --no-startup-id compton --config ~/.config/i3/compton.conf
+# exec --no-startup-id compton --config ~/.config/i3/compton.conf
+exec xcompmgr
 
 
 # urxvt deamon and use the client as default terminal

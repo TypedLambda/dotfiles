@@ -160,11 +160,13 @@ URxvt.scrollstyle: plain
 URxvt.urgentOnBell: true
 URxvt.visualBell: true
 URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
-URxvt.shading: 95
 
 URxvt.background:            SD_base03
 URxvt.foreground:            SD_base00
-URxvt.fading:                40
+
+! shading and fading on focus lost... bg: shading fg:fading
+URxvt.shading:               95
+URxvt.fading:                20
 URxvt.fadeColor:             SD_base03
 URxvt.cursorColor:           SD_base1
 URxvt.pointerColorBackground:SD_base01
