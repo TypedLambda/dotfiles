@@ -1,0 +1,41 @@
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! disable scrolling in second screen area, (vi/less etc)
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+URxvt.letterSpace: -1
+! URxvt.font: xft:bitstream vera sans mono:size=12:antialias=true
+! URxvt.boldFont: xft:bitstream vera sans mono:bold:size=12:antialias=true
+URxvt.font: xft:Anonymous Pro:bold:size=14:antialias=true
+URxvt.boldFont: xft:Anonymous Pro:bold:size=14:antialias=true
+! URxvt.font: xft:FiraCode:size=12:antialias=true
+! URxvt.boldFont: xft:FiraCode:bold:size=12:antialias=true
+
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.scrollBar_floating: false
+URxvt.scrollstyle: plain
+URxvt.urgentOnBell: true
+URxvt.visualBell: true
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
+! Turn on/off double-buffering for xft (default enabled).
+! if turned on, there are compton compositor slowdowns.
+URxvt*buffered: false
+
+! shading and fading on focus lost... bg: shading fg:fading
+URxvt.shading:               95
+URxvt.fading:                20
+
+! colors are set by the colorize macro
+URxvt*termName:  screen-256color
+URxvt*dynamicColors: true
+
+urxvt*perl-ext-common: urxvt-colors
+urxvt*keysym.F12: perl:urxvt-colors:

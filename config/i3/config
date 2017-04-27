@@ -228,6 +228,8 @@ for_window [class="VirtualBox"] floating enable
 for_window [window_role="pop-up"] floating enable:t
 for_window [window_role="task_dialog"] floating enable
 
+for_window [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] floating disable
+assign [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] "F4"
 
 #float windows on Fn workspaces
 for_window [workspace="^F[0-9]"] floating enable mark _tiling 
