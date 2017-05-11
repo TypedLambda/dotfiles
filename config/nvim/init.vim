@@ -89,6 +89,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'CoatiSoftware/vim-sourcetrail'
 Plug 'Shougo/neoinclude.vim'
+Plug 'skuro/plantuml-mode'
 
 
 let g:gutentags_cache_dir = '~/.tags_cache'
@@ -212,6 +213,8 @@ augroup vimrc
                     \|   nnoremap <buffer> .. :edit %:h<CR>
                     \| endif
         autocmd! BufWritePost * Neomake
+
+        autocmd BufReadPost /etc/rc.conf setfiletype sh 
 
 augroup END
 

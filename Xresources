@@ -1,6 +1,7 @@
 #include ".Xresources.d/solarized" 
 
-Xft.dpi:        141
+! dpi is set automaticaly in
+! Xft.dpi:        141
 Xft.autohint:   0
 Xft.antialias:  1
 Xft.rgba:       rgb

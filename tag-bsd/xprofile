@@ -7,8 +7,9 @@ export XDG_DATA_DIRS
 XDG_CONFIG_DIRS="/usr/local/etc/xdg"
 export XDG_CONFIG_DIRS
 
-#Load any Xterm settings
+# query x server dpi, set Xft.
 xrdb -merge -cpp cpp ~/.Xresources
+xdpyinfo  | awk '/resolution/{sub(/x[0-9]*/,"");print "Xtf.dpi: " $2}' |xrdb -merge
 
 # Check for any specific TrueOS apps we need to start at login
 if [ -d /usr/local/share/trueos/xstartup/ ] ; then
@@ -65,4 +66,10 @@ xset m 1 1/1
 
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
+
+# kill all children at end of session
+trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
+
+
+_JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
 
