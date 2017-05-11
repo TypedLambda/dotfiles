@@ -239,23 +239,9 @@ bindsym button9 move left
 bindsym button8 move right
 
 
-# next/previous workspace
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-
-#printscreen
-bindsym Print exec lumina-screenshot
-
 for_window [window_role="pop-up"] floating enable
-for_window [title="Calculator"] floating enable
-for_window [title="Calculator"] border 1pixel
-for_window [instance="lumina-screenshot"] floating enable
-for_window [instance="pc-wificonfig"] floating enable
-for_window [class="Wine" instance="1Password.exe" ] exec "xdotool search --onlyvisible --classname 1Password.exe | xargs -n 1 xwininfo -id | awk '/has no name/{print $4}' | xargs xdotool windowunmap"
-# for_window [class="sysadm-client"] floating enable
-for_window [class="VirtualBox"] floating enable
-for_window [window_role="pop-up"] floating enable:t
 for_window [window_role="task_dialog"] floating enable
+# for_window [class="VirtualBox"] floating enable
 
 for_window [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] floating disable
 assign [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] "F4"
@@ -288,9 +274,6 @@ for_window [class="Chromium-browser" instance="^crx_"] floating disable
 assign [title="SlackDeck" class="Chromium-browser"] 5
 
 exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
-assign [class="Thunderbird"] 8
-# exec --no-startup-id /usr/local/bin/chrome --profile-directory=Default --app-id=jeogkiiogjbmhklcnbgkdcjoioegiknm
-# exec --no-startup-id compton --config ~/.config/i3/compton.conf
 exec xcompmgr
 
 

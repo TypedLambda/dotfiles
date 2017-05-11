@@ -33,6 +33,8 @@ export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
 eval $(ssh-agent -s)
 
+which xcompmgr && xcompmgr &
+
 [ -f /usr/local/VirtualGL/bin/vglgenkey ] &&  /usr/local/VirtualGL/bin/vglgenkey
 
 
