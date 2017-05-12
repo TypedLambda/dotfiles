@@ -1,3 +1,6 @@
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "dynamic-colors"]
+	path = dynamic-colors
+	url = https://github.com/sos4nt/dynamic-colors
