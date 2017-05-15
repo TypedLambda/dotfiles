@@ -5,3 +5,4 @@ source $HOME/.kiex/scripts/kiex.fish
 dynamic-colors init
 
 eval (python -m virtualfish); or true
+eval (opam config env); or true
