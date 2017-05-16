@@ -90,7 +90,10 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'CoatiSoftware/vim-sourcetrail'
 Plug 'Shougo/neoinclude.vim'
 Plug 'skuro/plantuml-mode'
-
+" Plug 'let-def/vimbufsync'
+" Plug 'lilred/coquille'
+Plug 'jvoorhis/coq.vim'
+" Plug 'vim-scripts/CoqIDE'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
@@ -212,9 +215,14 @@ augroup vimrc
                     \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$'
                     \|   nnoremap <buffer> .. :edit %:h<CR>
                     \| endif
-        autocmd! BufWritePost * Neomake
+        autocmd BufWritePost * Neomake
 
         autocmd BufReadPost /etc/rc.conf setfiletype sh 
+        " Maps Coquille commands to CoqIDE default key bindings
+        " autocmd FileType coq call coquille#CoqideMapping()
+        " Maps Coquille commands to <F2> (Undo), <F3> (Next), <F4> (ToCursor)
+        " au FileType coq call coquille#FNMapping()
+        autocmd BufRead,BufNewFile *.v set filetype=coq
 
 augroup END
 
@@ -246,10 +254,10 @@ elseif has("unix")
 endif
 
 
-if executable("erl")
-    let s:erlang_path = system("erl -eval 'io:format(\"~s\", [lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version), \"/include\"])])' -s init stop -noshell")
-    let g:deoplete#sources#clang#flags = ['-I'.s:erlang_path.'']
-endif
+" if executable("erl")
+"     let s:erlang_path = system("erl -eval 'io:format(\"~s\", [lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version), \"/include\"])])' -s init stop -noshell")
+"     let g:deoplete#sources#clang#flags = ['-I'.s:erlang_path.'']
+" endif
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
