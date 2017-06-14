@@ -94,6 +94,7 @@ Plug 'skuro/plantuml-mode'
 " Plug 'lilred/coquille'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
+Plug 'vimoutliner/vimoutliner'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
@@ -159,6 +160,7 @@ let g:snips_author = 'Arne Ehrlich'
 let g:airline_enable_tagbar=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_powerline_fonts=1
 let javaScript_fold=1    " JavaScript
 let perl_fold=1          " Perl
 let php_folding=1        " PHP
@@ -266,4 +268,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " .local/share/nvim/plugged/vim-snippets/UltiSnips
 let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips'] 
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+
+let g:vo_modules_load = ':newhoist'
 

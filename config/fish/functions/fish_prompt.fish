@@ -2,6 +2,9 @@ function fish_prompt --description 'Write out the prompt'
 	set -l color_cwd
     set -l suffix 
     set -l userhl normal
+    if set -q VIRTUAL_ENV
+        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+    end
     switch $USER
         case root toor
             if set -q fish_color_cwd_root
