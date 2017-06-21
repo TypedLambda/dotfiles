@@ -270,7 +270,10 @@ exec --no-startup-id pc-mixer
 exec --no-startup-id pc-mounttray
 exec --no-startup-id sysadm-client
 exec --no-startup-id dunst -fn $smallfont 
-exec --no-startup-id 'tail -n0 -f /var/log/messages | xargs -L1 -I% -- notify-send "System Message" "%"'
+
+# post syslog messages to dunst
+set $log /var/log/messages
+exec --no-startup-id tail -n0 -f $log | xargs -L1 -I% -- notify-send -a syslog "$log" "%"
 
 exec --no-startup-id remmina -i
 exec --no-startup-id pc-nettray wlan0

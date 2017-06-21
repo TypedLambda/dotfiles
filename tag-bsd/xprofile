@@ -30,8 +30,8 @@ fi
 # Fix an issue with large image rendering via mozilla
 export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
-export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
-eval $(ssh-agent -s)
+# export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
+# eval $(ssh-agent -s)
 
 which xcompmgr && xcompmgr &
 
