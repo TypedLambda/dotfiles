@@ -289,7 +289,7 @@ for_window [class="Chromium-browser" instance="^crx_"] floating disable
 # assign [title="SlackDeck" class="Chromium-browser"] 5
 
 # exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
-exec xcompmgr
+exec --no-startup-id xcompmgr
 
 
 # urxvt deamon and use the client as default terminal

@@ -95,7 +95,7 @@ Plug 'skuro/plantuml-mode'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
 Plug 'vimoutliner/vimoutliner'
-Plig 'vim-utils/vim-man'
+Plug 'vim-utils/vim-man'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
