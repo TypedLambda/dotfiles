@@ -95,10 +95,13 @@ Plug 'skuro/plantuml-mode'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
 Plug 'vimoutliner/vimoutliner'
+
+" skip loading the nvim man functions. use vim-man
 Plug 'vim-utils/vim-man'
+let g:loaded_man = 1
+
 
 let g:gutentags_cache_dir = '~/.tags_cache'
-
 
 call plug#end()
 syntax on
