@@ -95,6 +95,7 @@ Plug 'skuro/plantuml-mode'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
 Plug 'vimoutliner/vimoutliner'
+Plig 'vim-utils/vim-man'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
@@ -102,8 +103,6 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 call plug#end()
 syntax on
 filetype plugin indent on
-
-runtime Man.vim
 
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
