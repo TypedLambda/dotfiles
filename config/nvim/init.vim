@@ -103,7 +103,6 @@ let g:loaded_man = 1
 " neoterm
 Plug 'kassio/neoterm'
 
-let g:gutentags_cache_dir = '~/.tags_cache'
 
 call plug#end()
 syntax on
@@ -260,10 +259,6 @@ elseif has("unix")
 endif
 
 
-" if executable("erl")
-"     let s:erlang_path = system("erl -eval 'io:format(\"~s\", [lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version), \"/include\"])])' -s init stop -noshell")
-"     let g:deoplete#sources#clang#flags = ['-I'.s:erlang_path.'']
-" endif
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -275,3 +270,24 @@ let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 let g:vo_modules_load = ':newhoist'
 
+let g:gutentags_cache_dir = '~/.cache/gutentags_cache'
+if executable("exctags")
+    let g:gutentags_ctags_executable="exctags"
+end
+
+function! s:add_erlang_include_path_to_deoplete()
+    if executable("erl")
+        if ! exists("g:deoplete#sources#clang#flags")
+            let g:deoplete#sources#clang#flags=[]
+        endif
+        let l:erlang_path = '-I ' . system("erl -eval 'io:format(\"~s\", [lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version), \"/include\"])])' -s init stop -noshell")
+        call filter(g:deoplete#sources#clang#flags,'v:val != "'.l:erlang_path.'"')
+        call insert(g:deoplete#sources#clang#flags,l:erlang_path)
+        echom "added ".l:erlang_path
+        " echom g:deoplete#sources#clang#flags
+    else
+        echom "erl: command not found"
+    endif
+endfunction
+command! ErlangDeopleteInclude call s:add_erlang_include_path_to_deoplete()
+command! FreeBSDStyle call FreeBSD_Style() 
