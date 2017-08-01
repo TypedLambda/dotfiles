@@ -100,6 +100,8 @@ Plug 'vimoutliner/vimoutliner'
 Plug 'vim-utils/vim-man'
 let g:loaded_man = 1
 
+" neoterm
+Plug 'kassio/neoterm'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
