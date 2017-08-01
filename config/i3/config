@@ -253,6 +253,9 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 # for_window [class="VirtualBox"] floating enable
 
+assign [class="Remmina" title= "win10-rdp-local"] "9"
+assign [class="Remmina" title= "win10-vnc-local"] "8"
+
 for_window [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] floating disable
 assign [class="VirtualBox" title= "Win10 [Running] - Oracle VM VirtualBox"] "F4"
 
