@@ -1,9 +1,9 @@
 if $SHELL =~ 'bin/fish'
     " set shell=/bin/sh
 endif
-if exists("$TMUX")
-    set mouse=a
-endif
+" if exists("$TMUX")
+set mouse=a
+" endif
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -43,6 +43,7 @@ Plug 'tpope/vim-eunuch'                   " :Remove etc
 Plug 'tpope/vim-tbone'
 Plug 'tpope/git-bump'
 Plug 'tpope/vim-sleuth'                   " guess file indention settings
+let g:sleuth_automatic = 1
 Plug 'neomake/neomake'                    " async make
 Plug 'kassio/neoterm'
 Plug 'vim-pandoc/vim-pandoc'
@@ -201,6 +202,7 @@ nnoremap <silent><leader>D  :bd<cr>
 nnoremap <silent>Q          :bn<cr>
 nnoremap <A-+>              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)+1)','')<CR>
 nnoremap <A-->              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)-1)','')<CR>
+nnoremap <leader>m  :Man 
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

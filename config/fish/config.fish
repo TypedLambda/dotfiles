@@ -1,8 +1,6 @@
 
 fish_vi_key_bindings
 
-set -gx PATH $HOME/.cargo/bin $PATH
-
 # source $HOME/kerl/19.2/activate.fish 
 # dynamic-colors init
 

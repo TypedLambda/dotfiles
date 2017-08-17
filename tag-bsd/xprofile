@@ -1,5 +1,10 @@
 # Setup some extra PATH variables
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HOME/bin:$HOME/.cargo/bin; export PATH
+
+# kill all children at end of session
+trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
+
+PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HOME/bin"
+export PATH
 
 XDG_DATA_DIRS="$HOME/.local/share/applications:/usr/share:/usr/local/share"
 export XDG_DATA_DIRS
@@ -11,32 +16,41 @@ export XDG_CONFIG_DIRS
 xrdb -merge -cpp cpp ~/.Xresources
 xdpyinfo  | awk '/resolution/{sub(/x[0-9]*/,"");print "Xtf.dpi: " $2}' |xrdb -merge
 
+pgrep xcompmgr ||  which -s xcompmgr && xcompmgr &
+[ -f /usr/local/VirtualGL/bin/vglgenkey ] &&  /usr/local/VirtualGL/bin/vglgenkey
+
+# remap some keys
+setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3:ralt_switch' 
+
+# mouse acceleration is handled by moused, set flat profile
+xset m 1 1/1 
+
+
 # Check for any specific TrueOS apps we need to start at login
-if [ -d /usr/local/share/trueos/xstartup/ ] ; then
-for i in $(ls /usr/local/share/trueos/xstartup/*.sh)
-do
-	# Run some task in the background to run in parallel
-	if [ $i = "/usr/local/share/trueos/xstartup/enable-inputmethod.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/gpg-agent.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/ssh-agent.sh" ] ; then
-		# Cannot work "VARIABLE=value ; export VARIABLE" in the
-		# fork(2)ed script.
-		if [ -x "${i}" ] ; then . ${i}
-		fi
-	else
-		if [ -x "${i}" ] ; then (. ${i}) & 
-		fi
-	fi
-done
-fi
+# if [ -d /usr/local/share/trueos/xstartup/ ] ; then
+# for i in $(ls /usr/local/share/trueos/xstartup/*.sh)
+# do
+# 	# Run some task in the background to run in parallel
+# 	if [ $i = "/usr/local/share/trueos/xstartup/enable-inputmethod.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/gpg-agent.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/ssh-agent.sh" ] ; then
+# 		# Cannot work "VARIABLE=value ; export VARIABLE" in the
+# 		# fork(2)ed script.
+# 		if [ -x "${i}" ] ; then . ${i}
+# 		fi
+# 	else
+# 		if [ -x "${i}" ] ; then (. ${i}) & 
+# 		fi
+# 	fi
+# done
+# fi
+
 # Fix an issue with large image rendering via mozilla
 export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
 # export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
-# eval $(ssh-agent -s)
 
-which xcompmgr && xcompmgr &
-
-[ -f /usr/local/VirtualGL/bin/vglgenkey ] &&  /usr/local/VirtualGL/bin/vglgenkey
-
+# start ssh-agent if no agent available
+pkill -U $(id -u) ssh-agent
+eval $(ssh-agent -s)
 
 # programs still have problems with sorting in utf-8
 # set collation to native C byte comparison
@@ -50,17 +64,15 @@ VISUAL=nvim
 export EDITOR
 export VISUAL
 
-# remap some keys
-setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin,eurosign:4,lv3:ralt_switch' 
+_JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
+export _JAVA_OPTIONS
 
-# mouse acceleration is handled by moused, set flat profile
-xset m 1 1/1 
 
-# deamons
-# if pusleaudio --check ; then
-	# pulseaudio --kill
-# fi
-# pulseaudio --start &
+deamons
+if pusleaudio --check ; then
+  pulseaudio --kill
+fi
+pulseaudio --start &
 
 #if which urxvtd ; then
 #pgrep -u "$USER" urxvtd || urxvtd -q -f -o 
@@ -69,9 +81,5 @@ xset m 1 1/1
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
 
-# kill all children at end of session
-trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
 
-
-_JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
 

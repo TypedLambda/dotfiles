@@ -264,9 +264,16 @@ for_window [workspace="^1[0-9]$"] floating enable mark _tiling
 for_window [workspace="^[0-9]$" con_mark="_tiling" ] floating disable unmark _tiling
 
 
-bindsym $mod+Pause exec i3lock -d -c 000000
+set $lockcmd "convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -i /dev/stdin"
 
+# bindsym $mod+Pause exec i3lock -f -c 000000
+# bindsym $mod+Pause exec $lockcmd 
+# bindsym $mod+Pause exec $lockcmd 
+
+exec --no-startup-id xautolock -time 5 -locker $lockcmd 
+bindsym $mod+Pause exec xautolock -locknow 
 ##Program Startup 
+
 
 # tray applets
 exec --no-startup-id pc-mixer
@@ -292,10 +299,12 @@ for_window [class="Chromium-browser" instance="^crx_"] floating disable
 # assign [title="SlackDeck" class="Chromium-browser"] 5
 
 # exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
-exec --no-startup-id xcompmgr
+# exec --no-startup-id xcompmgr
 
 
 # urxvt deamon and use the client as default terminal
 #exec --no-startup-id urxvtd  
+# bindsym $mod+Return exec qterminal
+# bindsym $mod+Return exec qterminal
 bindsym $mod+Return exec terminology
 
