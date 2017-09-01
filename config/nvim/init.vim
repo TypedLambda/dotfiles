@@ -21,12 +21,16 @@ call plug#begin(g:plugin_dir)
 Plug 'altercation/vim-colors-solarized'   " color theme
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " complition engine
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
 " Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
 " Plug 'ervandew/supertab'
 Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
 Plug 'Shougo/neco-vim'                    " vimL completion
-Plug 'Shougo/neopairs.vim'                " close complietion pairs
+" Plug 'Shougo/neopairs.vim'                " close complietion pairs
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -83,8 +87,8 @@ Plug 'sebastianmarkow/deoplete-rust'
 Plug 'tomlion/vim-solidity'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
 Plug 'ludovicchabant/vim-gutentags'
@@ -96,6 +100,7 @@ Plug 'skuro/plantuml-mode'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
 Plug 'vimoutliner/vimoutliner'
+
 
 " skip loading the nvim man functions. use vim-man
 Plug 'vim-utils/vim-man'
@@ -202,7 +207,7 @@ nnoremap <silent><leader>D  :bd<cr>
 nnoremap <silent>Q          :bn<cr>
 nnoremap <A-+>              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)+1)','')<CR>
 nnoremap <A-->              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)-1)','')<CR>
-nnoremap <leader>m  :Man 
+nnoremap <leader>m  :Man
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -224,7 +229,7 @@ augroup vimrc
                     \| endif
         autocmd BufWritePost * Neomake
 
-        autocmd BufReadPost /etc/rc.conf setfiletype sh 
+        autocmd BufReadPost /etc/rc.conf setfiletype sh
         " Maps Coquille commands to CoqIDE default key bindings
         " autocmd FileType coq call coquille#CoqideMapping()
         " Maps Coquille commands to <F2> (Undo), <F3> (Next), <F4> (ToCursor)
@@ -245,7 +250,7 @@ map  g/ <Plug>(incsearch-stay)
 map  y  <Plug>(operator-flashy)
 nmap Y  <Plug>(operator-flashy)$
 
-if has("mac") 
+if has("mac")
     let s:llvmdir = glob("/usr/local/Cellar/llvm/*/",1,1)[0]
     let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.dylib"
     let g:chromatica#libclang_path=s:llvmdir."lib/libclang.dylib"
@@ -260,14 +265,29 @@ elseif has("unix")
   endif
 endif
 
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<C-j>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsEnableSnipMate = 0
 " .local/share/nvim/plugged/vim-snippets/UltiSnips
-let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips'] 
+" let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips']
+
+" deoplete + neosnippet + autopairs changes
+let g:AutoPairsMapCR=0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
+
+
+
+
+
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 let g:vo_modules_load = ':newhoist'
@@ -292,4 +312,4 @@ function! s:add_erlang_include_path_to_deoplete()
     endif
 endfunction
 command! ErlangDeopleteInclude call s:add_erlang_include_path_to_deoplete()
-command! FreeBSDStyle call FreeBSD_Style() 
+command! FreeBSDStyle call FreeBSD_Style()
