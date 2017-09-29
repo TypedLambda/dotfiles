@@ -267,27 +267,27 @@ endif
 
 " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" let g:UltiSnipsExpandTrigger="<C-j>"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsEnableSnipMate = 0
-" .local/share/nvim/plugged/vim-snippets/UltiSnips
-" let g:UltiSnipsSnippetDirectories = [ s:vimpath . "/ulti-snippets" ,g:plugin_dir . '/vim-snippets/Ultisnips', g:plugin_dir . '/vim-phoenix/ultisnips',         g:plugin_dir . '/vim-fish/UltiSnips']
-
-" deoplete + neosnippet + autopairs changes
+" " deoplete + neosnippet + autopairs changes
 let g:AutoPairsMapCR=0
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
+
+function! s:neosnippet_deoplete_cr()
+  if pumvisible()
+      call deoplete#close_popup()
+      if neosnippet#expandable_or_jumpable()
+          return "\<Plug>(neosnippet_expand_or_jump)"
+      end
+  else
+      return "\<CR>\<Plug>AutoPairsReturn"
+  endif
+endfunction
+
+imap <expr><TAB> pumvisible()?"\<C-n>":(neosnippet#expandable_or_jumpable()?"\<Plug>(neosnippet_expand_or_jump)":"\<TAB>")
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
-
-
-
-
-
+" imap <expr><CR> pumvisible() ?(deoplete#close_popup()) : "\<CR>\<Plug>AutoPairsReturn"
+imap <expr><CR> <SID>neosnippet_deoplete_cr()
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 let g:vo_modules_load = ':newhoist'
