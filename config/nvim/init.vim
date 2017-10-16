@@ -87,7 +87,7 @@ Plug 'sebastianmarkow/deoplete-rust'
 Plug 'tomlion/vim-solidity'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'powerman/vim-plugin-AnsiEsc'
-" Plug 'SirVer/ultisnips'
+Plug 'Shougo/echodoc.vim'" Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
@@ -100,11 +100,13 @@ Plug 'skuro/plantuml-mode'
 Plug 'jvoorhis/coq.vim'
 " Plug 'vim-scripts/CoqIDE'
 Plug 'vimoutliner/vimoutliner'
-
-
 " skip loading the nvim man functions. use vim-man
 Plug 'vim-utils/vim-man'
 let g:loaded_man = 1
+" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'junegunn/fzf'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/echodoc.vim'
 
 " neoterm
 Plug 'kassio/neoterm'
@@ -265,29 +267,43 @@ elseif has("unix")
   endif
 endif
 
+let g:deoplete#sources#rust#racer_binary=$HOME."/cargo/bin/racer"
+let g:deoplete#sources#rust#rust_source_path=$HOME.'/Source/rust/src'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#documentation_max_height=20
+" let g:deoplete#sources#rust#disable_keymap=1
+" nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
+" nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+
+imap <expr><TAB>
+	 \ neosnippet#expandable_or_jumpable() ?
+	 \    "\<Plug>(neosnippet_expand_or_jump)" :
+         \ 	  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"
 
 " " deoplete + neosnippet + autopairs changes
-let g:AutoPairsMapCR=0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+" let g:AutoPairsMapCR=0
+" let g:deoplete#auto_complete_start_length = 2
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
 
-function! s:neosnippet_deoplete_cr()
-  if pumvisible()
-      call deoplete#close_popup()
-      if neosnippet#expandable_or_jumpable()
-          return "\<Plug>(neosnippet_expand_or_jump)"
-      end
-  else
-      return "\<CR>\<Plug>AutoPairsReturn"
-  endif
-endfunction
+" function! s:neosnippet_deoplete_cr()
+"   if pumvisible()
+"       call deoplete#close_popup()
+"       if neosnippet#expandable_or_jumpable()
+"           return "\<Plug>(neosnippet_expand_or_jump)"
+"       end
+"   else
+"       return "\<CR>\<Plug>AutoPairsReturn"
+"   endif
+" endfunction
 
-imap <expr><TAB> pumvisible()?"\<C-n>":(neosnippet#expandable_or_jumpable()?"\<Plug>(neosnippet_expand_or_jump)":"\<TAB>")
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" imap <expr><CR> pumvisible() ?(deoplete#close_popup()) : "\<CR>\<Plug>AutoPairsReturn"
-imap <expr><CR> <SID>neosnippet_deoplete_cr()
+" imap <expr><TAB> pumvisible()?"\<C-n>":(neosnippet#expandable_or_jumpable()?"\<Plug>(neosnippet_expand_or_jump)":"\<TAB>")
+" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" " imap <expr><CR> pumvisible() ?(deoplete#close_popup()) : "\<CR>\<Plug>AutoPairsReturn"
+" imap <expr><CR> <SID>neosnippet_deoplete_cr()
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 let g:vo_modules_load = ':newhoist'
@@ -296,6 +312,14 @@ let g:gutentags_cache_dir = '~/.cache/gutentags_cache'
 if executable("exctags")
     let g:gutentags_ctags_executable="exctags"
 end
+
+if executable("lpr-cups")
+    let &printexpr = substitute(&printexpr,"'lpr'","'lpr-cups'","")
+end
+
+
+
+
 
 function! s:add_erlang_include_path_to_deoplete()
     if executable("erl")
