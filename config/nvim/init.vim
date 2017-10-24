@@ -83,6 +83,7 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'            " alignment as with tabularise, but as a normal mode command 'ga'
 Plug 'rust-lang/rust.vim'
 Plug 'sebastianmarkow/deoplete-rust'
+Plug 'timonv/vim-cargo'
 " Plug 'mattreduce/vim-mix'
 Plug 'tomlion/vim-solidity'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -306,12 +307,15 @@ imap <expr><TAB>
 " imap <expr><CR> <SID>neosnippet_deoplete_cr()
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
+let g:startify_fortune_use_unicode = 1
 let g:vo_modules_load = ':newhoist'
 
 let g:gutentags_cache_dir = '~/.cache/gutentags_cache'
 if executable("exctags")
     let g:gutentags_ctags_executable="exctags"
 end
+" disable tags generation for mac Homebrew, and FreeBSD source and portstree
+let g:gutentags_exclude_project_root = ["/usr/local","/usr/ports","/usr/src"]
 
 if executable("lpr-cups")
     let &printexpr = substitute(&printexpr,"'lpr'","'lpr-cups'","")
