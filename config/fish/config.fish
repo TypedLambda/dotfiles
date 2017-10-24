@@ -20,8 +20,8 @@ end
 
 # set -gx PATH /usr/local/lib/erlang20/bin $PATH
 set -gx PATH "$HOME/.node/bin" $PATH
+set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx NODE_PATH "$HOME/.node/lib/node_modulesr" $NODE_PATH 
 
-
-
+set -gx 
 source "$HOME/.asdf/asdf.fish"
