@@ -316,6 +316,7 @@ if executable("exctags")
 end
 " disable tags generation for mac Homebrew, and FreeBSD source and portstree
 let g:gutentags_exclude_project_root = ["/usr/local","/usr/ports","/usr/src"]
+let g:gutentags_project_root = ["Makefile","Cargo.toml","mix.exs"]
 
 if executable("lpr-cups")
     let &printexpr = substitute(&printexpr,"'lpr'","'lpr-cups'","")
