@@ -27,24 +27,24 @@ xset m 1 1/1
 
 
 # Check for any specific TrueOS apps we need to start at login
-if [ -d /usr/local/share/trueos/xstartup/ ] ; then
-for i in $(ls /usr/local/share/trueos/xstartup/*.sh)
-do
-	# Run some task in the background to run in parallel
-	if [ $i = "/usr/local/share/trueos/xstartup/enable-inputmethod.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/gpg-agent.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/ssh-agent.sh" ] ; then
-		# Cannot work "VARIABLE=value ; export VARIABLE" in the
-		# fork(2)ed script.
-		if [ -x "${i}" ] ; then . ${i}
-		fi
-	else
-		if [ -x "${i}" ] ; then (. ${i}) & 
-		fi
-	fi
-done
-fi
+# if [ -d /usr/local/share/trueos/xstartup/ ] ; then
+# for i in $(ls /usr/local/share/trueos/xstartup/*.sh)
+# do
+# 	# Run some task in the background to run in parallel
+# 	if [ $i = "/usr/local/share/trueos/xstartup/enable-inputmethod.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/gpg-agent.sh" ] || [ $i = "/usr/local/share/trueos/xstartup/ssh-agent.sh" ] ; then
+# 		# Cannot work "VARIABLE=value ; export VARIABLE" in the
+# 		# fork(2)ed script.
+# 		if [ -x "${i}" ] ; then . ${i}
+# 		fi
+# 	else
+# 		if [ -x "${i}" ] ; then (. ${i}) & 
+# 		fi
+# 	fi
+# done
+# fi
 
 # Fix an issue with large image rendering via mozilla
-export MOZ_DISABLE_IMAGE_OPTIMIZE=1
+# export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
 # export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
 
@@ -68,24 +68,20 @@ _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Da
 export _JAVA_OPTIONS
 
 
-deamons
-if pusleaudio --check ; then
-  pulseaudio --kill
-fi
-pulseaudio --start &
+# if pusleaudio --check ; then
+#   pulseaudio --kill
+# fi
+# pulseaudio --start &
 
 #if which urxvtd ; then
 #pgrep -u "$USER" urxvtd || urxvtd -q -f -o 
 #fi
-QT_NO_GLIB=1
+# QT_NO_GLIB=1
 QT_QPA_PLATFORMTHEME=lthemeengine
 export QT_QPA_PLATFORMTHEME QT_NO_GLIB
 
 # QT_XKB_CONFIG_ROOT /usr/local/share/X11/xkb/
 
-history 'grep QT .xprofile'  'set |grep QT '  'ifconfig '  'vi .xprofile'  'ls'  'lo'…
 # load local profile
 [ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local" 
-
-
 

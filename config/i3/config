@@ -228,6 +228,21 @@ bar {
         status_command i3status
         font $largefont
         position top
+        workspace_buttons yes
+        mode dock
+        tray_output primary
+        tray_padding 1
+        colors {
+                background #000000
+                statusline #ffffff
+                separator #666666
+
+                focused_workspace  #4c7899 #285577 #ffffff
+                active_workspace   #333333 #5f676a #ffffff
+                inactive_workspace #333333 #222222 #888888
+                urgent_workspace   #2f343a #900000 #ffffff
+                binding_mode       #2f343a #900000 #ffffff
+        }
 }
 
 # mouse config
@@ -249,6 +264,7 @@ bindsym button9 move left
 bindsym button8 move right
 
 # toggle split direction for each window
+default_orientation vertical
 for_window [class="^"] split toggle
 
 # for_window [class="VirtualBox"] floating enable
@@ -276,6 +292,10 @@ set $lockcmd "convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /d
 # bindsym $mod+Pause exec i3lock -f -c 000000
 # bindsym $mod+Pause exec $lockcmd 
 # bindsym $mod+Pause exec $lockcmd 
+
+# exec --no-startup-id "pkill -U ehrlich xcompmgr; xcompmgr"
+exec --no-startup-id "pkill -U ehrlich xcompmgr; compton -b"
+
 
 exec --no-startup-id xautolock -time 10 -locker $lockcmd 
 bindsym $mod+Pause exec xautolock -locknow 
@@ -307,7 +327,6 @@ assign [class="Firefox" instance="DTA"] 11
 
 # for_window [class="Firefox"] exec i3-msg 
 # exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
-# exec --no-startup-id xcompmgr
 
 
 # urxvt deamon and use the client as default terminal
