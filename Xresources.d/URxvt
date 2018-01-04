@@ -31,7 +31,7 @@ URxvt.shading:               95
 URxvt.fading:                20
 
 ! colors are set by the colorize macro
-URxvt*termName:  screen-256color
+! URxvt*termName:  screen-256color
 URxvt*dynamicColors: true
 
 urxvt*perl-ext-common: urxvt-colors

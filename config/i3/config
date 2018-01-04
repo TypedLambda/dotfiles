@@ -230,10 +230,12 @@ bar {
         position top
         workspace_buttons yes
         mode dock
-        tray_output primary
-        tray_padding 1
+        # tray_output HDMI-1
+        tray_output eDP-1
+        # tray_output off
         colors {
-                background #000000
+                background #000000FF
+                # background #222222
                 statusline #ffffff
                 separator #666666
 
@@ -244,6 +246,8 @@ bar {
                 binding_mode       #2f343a #900000 #ffffff
         }
 }
+
+# exec stalonetray
 
 # mouse config
 floating_modifier $mod
@@ -287,6 +291,8 @@ for_window [workspace="^1[0-9]$"] floating enable mark _tiling
 for_window [workspace="^[0-9]$" con_mark="_tiling" ] floating disable unmark _tiling
 
 
+# for_window [class="Diligent"] floating enable
+for_window [class="Zeal"] floating enable
 set $lockcmd "convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin"
 
 # bindsym $mod+Pause exec i3lock -f -c 000000
