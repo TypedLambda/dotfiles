@@ -34,6 +34,11 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
+# urxvt deamon and use the client as default terminal
+#exec --no-startup-id urxvtd  
+# bindsym $mod+Return exec qterminal
+# bindsym $mod+Return exec qterminal
+bindsym $mod+Return exec sakura
 
 # kill focused window
 bindsym $mod+Shift+w kill
@@ -231,8 +236,10 @@ bar {
         workspace_buttons yes
         mode dock
         # tray_output HDMI-1
-        tray_output eDP-1
+        # tray_output eDP-1
         # tray_output off
+
+        tray_output auto
         colors {
                 background #000000FF
                 # background #222222
@@ -318,8 +325,7 @@ exec --no-startup-id dunst -fn $smallfont
 set $log /var/log/messages
 exec --no-startup-id tail -n0 -f $log | xargs -L1 -I% -- notify-send -a syslog "$log" "%"
 
-exec --no-startup-id remmina -i
-exec --no-startup-id pc-nettray wlan0
+# exec --no-startup-id pc-nettray wlan0
 
 # keyboard and mause setting, swaps some keys!
 # exec_always --no-startup-id setxkbmap -option 'ctrl:nocaps,compose:menu,altwin:swap_lalt_lwin' 
@@ -329,15 +335,12 @@ exec --no-startup-id pc-nettray wlan0
 bindsym $mod+control+space exec tracker-needle 
 for_window [instance="tracker-needle"] floating enable
 for_window [class="Chromium-browser" instance="^crx_"] floating disable
+for_window [instance="arandr" ] floating enable
 assign [class="Firefox" instance="DTA"] 11
 
 # for_window [class="Firefox"] exec i3-msg 
 # exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
 
 
-# urxvt deamon and use the client as default terminal
-#exec --no-startup-id urxvtd  
-# bindsym $mod+Return exec qterminal
-# bindsym $mod+Return exec qterminal
-bindsym $mod+Return exec terminology
 
+exec --no-startup-id ~/.screenlayout/screenlayout.sh
