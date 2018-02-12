@@ -13,7 +13,7 @@ Xcursor.size: 32
 
 ! set app colors
 #define ARG_CLASS URxvt
-#define ARG_COLORSCHEME SOLARIZED_DARK
+#define ARG_COLORSCHEME SOLARIZED_LIGHT
 #include ".Xresources.d/colorize"
 
 #include ".Xresources.d/URxvt"

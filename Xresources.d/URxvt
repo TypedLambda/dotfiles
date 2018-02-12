@@ -11,7 +11,7 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.letterSpace: -1
 URxvt.font: \
-    xft:Inconsolata:size=14:antialias=true:hinting=true,xft:PowerlineSymbols,xft:Symbola:size=14:antialias=true:hinting=true
+    xft:Inconsolata:size=15:antialias=true:hinting=true,xft:PowerlineSymbols,xft:Symbola:size=14:antialias=true:hinting=true
 
 
 URxvt.scrollBar: false
@@ -27,8 +27,8 @@ URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt*buffered: false
 
 ! shading and fading on focus lost... bg: shading fg:fading
-URxvt.shading:               95
-URxvt.fading:                20
+URxvt.shading:               98
+URxvt.fading:                10
 
 ! colors are set by the colorize macro
 ! URxvt*termName:  screen-256color
