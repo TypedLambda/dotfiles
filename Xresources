@@ -1,6 +1,6 @@
 #include ".Xresources.d/solarized" 
 /* Xft.dpi:        141 */
-Xft.rgba:       rgb
+Xft.rgba:       rgba
 Xft.hinting:    1
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault

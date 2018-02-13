@@ -27,8 +27,8 @@ URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 URxvt*buffered: false
 
 ! shading and fading on focus lost... bg: shading fg:fading
-URxvt.shading:               98
-URxvt.fading:                10
+! URxvt.shading:               0
+! URxvt.fading:                0
 
 ! colors are set by the colorize macro
 ! URxvt*termName:  screen-256color

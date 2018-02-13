@@ -13,86 +13,84 @@
 
 #if !defined(ARG_CLASS) || (TEST_EXPAND(CLASS) == 1)
 
-*background:            EXPAND(ARG_COLORSCHEME(base3))
-*foreground:            EXPAND(ARG_COLORSCHEME(base00))
-*fadeColor:             EXPAND(ARG_COLORSCHEME(base03))
-*cursorColor:           EXPAND(ARG_COLORSCHEME(base01))
-*pointerColorBackground:EXPAND(ARG_COLORSCHEME(base2))
-*pointerColorForeground:EXPAND(ARG_COLORSCHEME(base01))
+*background:            EXPAND(ARG_COLORSCHEME(background))
+*foreground:            EXPAND(ARG_COLORSCHEME(foreground))
+*cursorColor:           EXPAND(ARG_COLORSCHEME(cursorColor))
+*pointerColorBackground:EXPAND(ARG_COLORSCHEME(pointerColorBackground))
+*pointerColorForeground:EXPAND(ARG_COLORSCHEME(pointerColorForeground))
 
 !! black dark/light
-*color0:                EXPAND(ARG_COLORSCHEME(base2))
-*color8:                EXPAND(ARG_COLORSCHEME(base3))
+*color0:                EXPAND(ARG_COLORSCHEME(color0))
+*color8:                EXPAND(ARG_COLORSCHEME(color8))
 
 !! red dark/light
-*color1:                EXPAND(ARG_COLORSCHEME(red))
-*color9:                EXPAND(ARG_COLORSCHEME(orange))
+*color1:                EXPAND(ARG_COLORSCHEME(color1))
+*color9:                EXPAND(ARG_COLORSCHEME(color9))
 
 !! green dark/light
-*color2:                EXPAND(ARG_COLORSCHEME(green))
-*color10:               EXPAND(ARG_COLORSCHEME(base01))
+*color2:                EXPAND(ARG_COLORSCHEME(color2))
+*color10:               EXPAND(ARG_COLORSCHEME(color10))
 
 !! yellow dark/light
-*color3:                EXPAND(ARG_COLORSCHEME(yellow))
-*color11:               EXPAND(ARG_COLORSCHEME(base0))
+*color3:                EXPAND(ARG_COLORSCHEME(color3))
+*color11:               EXPAND(ARG_COLORSCHEME(color11))
 
 !! blue dark/light
-*color4:                EXPAND(ARG_COLORSCHEME(blue))
-*color12:               EXPAND(ARG_COLORSCHEME(base00))
+*color4:                EXPAND(ARG_COLORSCHEME(color4))
+*color12:               EXPAND(ARG_COLORSCHEME(color12))
 
 !! magenta dark/light
-*color5:                EXPAND(ARG_COLORSCHEME(magenta))
-*color13:               EXPAND(ARG_COLORSCHEME(violet))
+*color5:                EXPAND(ARG_COLORSCHEME(color5))
+*color13:               EXPAND(ARG_COLORSCHEME(color13))
 
 !! cyan dark/light
-*color6:                EXPAND(ARG_COLORSCHEME(cyan))
-*color14:               EXPAND(ARG_COLORSCHEME(base01))
+*color6:                EXPAND(ARG_COLORSCHEME(color6))
+*color14:               EXPAND(ARG_COLORSCHEME(color14))
 
 !! white dark/light
-*color7:                EXPAND(ARG_COLORSCHEME(base02))
-*color15:               EXPAND(ARG_COLORSCHEME(base03))
+*color7:                EXPAND(ARG_COLORSCHEME(color7))
+*color15:               EXPAND(ARG_COLORSCHEME(color15))
 
 
 #else
 
-ARG_CLASS.background:            EXPAND(ARG_COLORSCHEME(base3))
-ARG_CLASS.foreground:            EXPAND(ARG_COLORSCHEME(base00))
-ARG_CLASS.fadeColor:             EXPAND(ARG_COLORSCHEME(base03))
-ARG_CLASS.cursorColor:           EXPAND(ARG_COLORSCHEME(base01))
-ARG_CLASS.pointerColorBackground:EXPAND(ARG_COLORSCHEME(base2))
-ARG_CLASS.pointerColorForeground:EXPAND(ARG_COLORSCHEME(base01))
+ARG_CLASS.background:            EXPAND(ARG_COLORSCHEME(background))
+ARG_CLASS.foreground:            EXPAND(ARG_COLORSCHEME(foreground))
+ARG_CLASS.cursorColor:           EXPAND(ARG_COLORSCHEME(cursorColor))
+ARG_CLASS.pointerColorBackground:EXPAND(ARG_COLORSCHEME(pointerColorBackground))
+ARG_CLASS.pointerColorForeground:EXPAND(ARG_COLORSCHEME(pointerColorForeground))
 
 !! black dark/light
-ARG_CLASS.color0:                EXPAND(ARG_COLORSCHEME(base2))
-ARG_CLASS.color8:                EXPAND(ARG_COLORSCHEME(base3))
+ARG_CLASS.color0:                EXPAND(ARG_COLORSCHEME(color0))
+ARG_CLASS.color8:                EXPAND(ARG_COLORSCHEME(color8))
 
 !! red dark/light
-ARG_CLASS.color1:                EXPAND(ARG_COLORSCHEME(red))
-ARG_CLASS.color9:                EXPAND(ARG_COLORSCHEME(orange))
+ARG_CLASS.color1:                EXPAND(ARG_COLORSCHEME(color1))
+ARG_CLASS.color9:                EXPAND(ARG_COLORSCHEME(color9))
 
 !! green dark/light
-ARG_CLASS.color2:                EXPAND(ARG_COLORSCHEME(green))
-ARG_CLASS.color10:               EXPAND(ARG_COLORSCHEME(base01))
+ARG_CLASS.color2:                EXPAND(ARG_COLORSCHEME(color2))
+ARG_CLASS.color10:               EXPAND(ARG_COLORSCHEME(color10))
 
 !! yellow dark/light
-ARG_CLASS.color3:                EXPAND(ARG_COLORSCHEME(yellow))
-ARG_CLASS.color11:               EXPAND(ARG_COLORSCHEME(base0))
+ARG_CLASS.color3:                EXPAND(ARG_COLORSCHEME(color3))
+ARG_CLASS.color11:               EXPAND(ARG_COLORSCHEME(color11))
 
 !! blue dark/light
-ARG_CLASS.color4:                EXPAND(ARG_COLORSCHEME(blue))
-ARG_CLASS.color12:               EXPAND(ARG_COLORSCHEME(base00))
+ARG_CLASS.color4:                EXPAND(ARG_COLORSCHEME(color4))
+ARG_CLASS.color12:               EXPAND(ARG_COLORSCHEME(color12))
 
 !! magenta dark/light
-ARG_CLASS.color5:                EXPAND(ARG_COLORSCHEME(magenta))
-ARG_CLASS.color13:               EXPAND(ARG_COLORSCHEME(violet))
+ARG_CLASS.color5:                EXPAND(ARG_COLORSCHEME(color5))
+ARG_CLASS.color13:               EXPAND(ARG_COLORSCHEME(color13))
 
 !! cyan dark/light
-ARG_CLASS.color6:                EXPAND(ARG_COLORSCHEME(cyan))
-ARG_CLASS.color14:               EXPAND(ARG_COLORSCHEME(base01))
+ARG_CLASS.color6:                EXPAND(ARG_COLORSCHEME(color6))
+ARG_CLASS.color14:               EXPAND(ARG_COLORSCHEME(color14))
 
 !! white dark/light
-ARG_CLASS.color7:                EXPAND(ARG_COLORSCHEME(base02))
-ARG_CLASS.color15:               EXPAND(ARG_COLORSCHEME(base03))
+ARG_CLASS.color7:                EXPAND(ARG_COLORSCHEME(color7))
+ARG_CLASS.color15:               EXPAND(ARG_COLORSCHEME(color15))
 
 #endif
 
