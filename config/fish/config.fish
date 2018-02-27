@@ -35,3 +35,9 @@ export_prepend_dir PATH  "$HOME/.node/bin"
 export_prepend_dir PATH "$HOME/.cargo/bin"
 export_prepend_dir NODE_PATH "$HOME/.node/lib/node_modules" 
 source_existing "$HOME/.asdf/asdf.fish"
+# source_existing "$HOME/.erlang-20.2/activate.fish"
+source_existing "$HOME/.asdf/asdf.fish"
+
+set -gx querty "-=qwertyuiop[]asdfghjkl;'zxcvbnm,./_+QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?"
+set -gx dvorak "[]',.pyfgcrl/=aoeuidhtns-;qjkxbmwvz{}\"<>PYFGCRL?+AOEUIDHTNS_:QJKXBMWVZ"
+

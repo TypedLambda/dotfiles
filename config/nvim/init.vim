@@ -24,12 +24,13 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " comp
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
+
 " Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
 " Plug 'ervandew/supertab'
 Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
 Plug 'Shougo/neco-vim'                    " vimL completion
-" Plug 'Shougo/neopairs.vim'                " close complietion pairs
+Plug 'Shougo/neopairs.vim'                " close complietion pairs
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
@@ -111,7 +112,15 @@ Plug 'Shougo/echodoc.vim'
 
 " neoterm
 Plug 'kassio/neoterm'
+Plug 'chrisbra/Colorizer'
+Plug 'zchee/deoplete-jedi'  
 
+Plug 'LucHermitte/VimFold4C'            " C / C++ folding 
+
+
+
+" bug workaround. 
+let g:deoplete#num_processes=1
 
 call plug#end()
 syntax on
@@ -266,12 +275,19 @@ elseif has("unix")
     let g:chromatica#libclang_path=s:llvmdir."lib/libclang.so"
     let g:deoplete#sources#clang#clang_header  = s:llvmdir."include"
   endif
+  if s:uname =~ "FreeBSD"
+    let s:llvmdir = "/usr/local/llvm40/"
+    let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.so"
+    let g:chromatica#libclang_path=s:llvmdir."lib/libclang.so"
+    let g:deoplete#sources#clang#clang_header  = s:llvmdir."include"
+  endif
 endif
 
 let g:deoplete#sources#rust#racer_binary=$HOME."/cargo/bin/racer"
 let g:deoplete#sources#rust#rust_source_path=$HOME.'/Source/rust/src'
 let g:deoplete#sources#rust#show_duplicates=1
 let g:deoplete#sources#rust#documentation_max_height=20
+let g:deoplete#sources#elixir=['alchemist']
 " let g:deoplete#sources#rust#disable_keymap=1
 " nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
 " nmap <buffer> K  <plug>DeopleteRustShowDocumentation

@@ -3,11 +3,14 @@
 # is used in the bar {} block below.
 # font pango:monospace 8
 
+set $terminal sakura
+# set $terminal urxvt
+
+
 #set $smallfont pango:Noto Sans 8
 #set $largefont pango:Noto Sans Mono 11
 set $smallfont xft:Noto Sans:size=8
 set $largefont xft:Noto Sans Mono:size=10
-
 font $smallfont
 
 set $up k
@@ -38,8 +41,8 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal
 #exec --no-startup-id urxvtd  
 # bindsym $mod+Return exec qterminal
 # bindsym $mod+Return exec qterminal
-bindsym $mod+Return exec sakura
-
+bindsym $mod+Return exec $terminal
+ 
 # kill focused window
 bindsym $mod+Shift+w kill
 
@@ -236,10 +239,10 @@ bar {
         workspace_buttons yes
         mode dock
         # tray_output HDMI-1
-        # tray_output eDP-1
+        tray_output eDP1
         # tray_output off
 
-        tray_output auto
+        # tray_output auto
         colors {
                 background #000000FF
                 # background #222222
