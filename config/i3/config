@@ -20,13 +20,30 @@ set $right l
 set $mod Mod4
 set $alt Mod1
 
+set $base03  #002b36
+set $base02  #073642
+set $base01  #586e75
+set $base00  #657b83
+set $base0   #839496
+set $base1   #93a1a1
+set $base2   #eee8d5
+set $base3   #fdf6e3
+set $yellow  #b58900
+set $orange  #cb4b16
+set $red     #dc322f
+set $magenta #d33682
+set $violet  #6c71c4
+set $blue    #268bd2
+set $cyan    #2aa198
+set $green   #859900
 
-#colors
-client.focused			       #315858  #315858  #111111
-#client.focused			        #bf3f34  #bf3f34   #bf3f34
-client.unfocused		                #2c2e2f  #2c2e2f  #315858
-client.focused_inactive	        #2c2e2f #2c2e2f  #2c2e2f
-client.urgent			              #383a3b #383a3b  #ee0000 
+# class                 border  backgr. text    indicator child_border
+client.focused          $base02 $blue   $base2  $green    $blue
+client.focused_inactive $base02 $base02 $base0  $base01   $base02
+client.unfocused        $base02 $base03 $base0  $base01   $base02
+client.urgent           $base02 $red    $base2  $red      $red   
+client.placeholder      $base03 $base02 $base1  $base02   $base02
+client.background       $base03
 
 bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+Shift+m unmark 
@@ -244,16 +261,15 @@ bar {
 
         # tray_output auto
         colors {
-                background #000000FF
-                # background #222222
-                statusline #ffffff
-                separator #666666
+                background $base03
+                statusline $base00
+                separator  $base02
 
-                focused_workspace  #4c7899 #285577 #ffffff
-                active_workspace   #333333 #5f676a #ffffff
-                inactive_workspace #333333 #222222 #888888
-                urgent_workspace   #2f343a #900000 #ffffff
-                binding_mode       #2f343a #900000 #ffffff
+                focused_workspace  $blue   $base02 $base2
+                active_workspace   $base1   $base02 $base01
+                inactive_workspace $base02 $base03 $base01
+                urgent_workspace   $base02 $red    $base2
+                binding_mode       $base02 $yellow $base2
         }
 }
 
