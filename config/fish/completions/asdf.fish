@@ -1,0 +1,1 @@
+/usr/home/ehrlich/.asdf/completions/asdf.fish

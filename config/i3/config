@@ -319,16 +319,17 @@ for_window [workspace="^[0-9]$" con_mark="_tiling" ] floating disable unmark _ti
 
 # for_window [class="Diligent"] floating enable
 for_window [class="Zeal"] floating enable
+for_window [class="sysadm-client"] floating enable
+for_window [class="pc-wificonfig"] floating enable
+for_window [class="pc-mixer"] floating enable
+for_window [class="pc-netmanager"] floating enable
+
+
 set $lockcmd "convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin"
 
-# bindsym $mod+Pause exec i3lock -f -c 000000
-# bindsym $mod+Pause exec $lockcmd 
-# bindsym $mod+Pause exec $lockcmd 
 
 # exec --no-startup-id "pkill -U ehrlich xcompmgr; xcompmgr"
 exec --no-startup-id "pkill -U ehrlich xcompmgr; compton -b"
-
-
 exec --no-startup-id xautolock -time 10 -locker $lockcmd 
 bindsym $mod+Pause exec xautolock -locknow 
 ##Program Startup 

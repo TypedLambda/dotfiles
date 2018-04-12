@@ -18,14 +18,14 @@ endif
 let g:plugin_dir="~/.local/share/nvim/plugged"
 call plug#begin(g:plugin_dir)
 
-Plug 'altercation/vim-colors-solarized'   " color theme
+" Plug 'altercation/vim-colors-solarized'   " color theme
+Plug 'icymind/NeoSolarized'   " color theme
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}               " complition engine
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
-
-" Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
+Plug 'arakashic/chromatica.nvim', {'do': ':UpdateRemotePlugins'}  " clang syntax highlite
 " Plug 'ervandew/supertab'
 Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
@@ -58,7 +58,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 " Plug 'zchee/deoplete-clang'               " clang completion
 Plug 'tweekmonster/deoplete-clang2'               " clang completion
-Plug 'tmux-plugins/vim-tmux-focus-events' " tmux focus event fix
 Plug 'roxma/vim-tmux-clipboard'           " tmux clipboard usage
 Plug 'godlygeek/tabular'
 Plug 'mhinz/vim-startify'
@@ -114,11 +113,10 @@ Plug 'Shougo/echodoc.vim'
 Plug 'kassio/neoterm'
 Plug 'chrisbra/Colorizer'
 Plug 'zchee/deoplete-jedi'  
-
-Plug 'LucHermitte/VimFold4C'            " C / C++ folding 
-
-
-
+" Plug 'LucHermitte/lh-vim-lib'
+" Plug 'LucHermitte/VimFold4C'            " C / C++ folding 
+Plug 'rhysd/vim-clang-format'
+Plug 'lervag/vimtex'
 " bug workaround. 
 let g:deoplete#num_processes=1
 
@@ -130,7 +128,7 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 set background=dark
-colorscheme solarized
+colorscheme NeoSolarized
 hi! clear SignCoLumn
 hi! link SignColumn LineNr
 hi! link ShowMarksHLl DiffAdd
@@ -220,6 +218,8 @@ nnoremap <silent>Q          :bn<cr>
 nnoremap <A-+>              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)+1)','')<CR>
 nnoremap <A-->              :silent!  let &guifont = substitute(&guifont,':h\zs\d\+','\=eval(submatch(0)-1)','')<CR>
 nnoremap <leader>m  :Man
+" retype man to Man, but only on the start of the normal commandline
+cnoreabbrev <expr> man (getcmdtype() == ':' && getcmdline() =~ '^man$')? 'Man' : 'man'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -247,6 +247,9 @@ augroup vimrc
         " Maps Coquille commands to <F2> (Undo), <F3> (Next), <F4> (ToCursor)
         " au FileType coq call coquille#FNMapping()
         autocmd BufRead,BufNewFile *.v set filetype=coq
+        autocmd BufRead,BufNewFile,BufEnter *wpa_supplicant.conf 
+            \ syntax match String /\v(psk|password|passwd)\s*\=\zs.*/ conceal cchar=X | 
+            \ setl conceallevel=2 concealcursor=nc
 
 augroup END
 
@@ -276,13 +279,14 @@ elseif has("unix")
     let g:deoplete#sources#clang#clang_header  = s:llvmdir."include"
   endif
   if s:uname =~ "FreeBSD"
-    let s:llvmdir = "/usr/local/llvm40/"
+    let s:llvmdir = glob("/usr/local/llvm*/",1,1)[0]
     let g:deoplete#sources#clang#libclang_path = s:llvmdir."lib/libclang.so"
     let g:chromatica#libclang_path=s:llvmdir."lib/libclang.so"
     let g:deoplete#sources#clang#clang_header  = s:llvmdir."include"
   endif
 endif
-
+let g:chromatica#enable_at_startup=1
+let g:chromatica#responsive_mode=1
 let g:deoplete#sources#rust#racer_binary=$HOME."/cargo/bin/racer"
 let g:deoplete#sources#rust#rust_source_path=$HOME.'/Source/rust/src'
 let g:deoplete#sources#rust#show_duplicates=1
@@ -329,6 +333,7 @@ let g:vo_modules_load = ':newhoist'
 let g:gutentags_cache_dir = '~/.cache/gutentags_cache'
 if executable("exctags")
     let g:gutentags_ctags_executable="exctags"
+    let g:tagbar_ctags_bin = "exctags"
 end
 " disable tags generation for mac Homebrew, and FreeBSD source and portstree
 let g:gutentags_exclude_project_root = ["/usr/local","/usr/ports","/usr/src"]
@@ -338,8 +343,8 @@ if executable("lpr-cups")
     let &printexpr = substitute(&printexpr,"'lpr'","'lpr-cups'","")
 end
 
-
-
+let g:polyglot_disabled = ['latex']  
+let g:python3_host_prog="python3.6"
 
 
 function! s:add_erlang_include_path_to_deoplete()

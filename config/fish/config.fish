@@ -20,7 +20,18 @@ function source_existing -d 'source file if it exists'
     end
 end
 
-if which -s python
+if which -s python2.7 
+    alias python python2.7
+    set PYTHON_VER 2.7
+else
+    if which -s python3.6
+        alias python python3.6
+        set PYTHON_VER 3.6
+    end
+end
+
+
+if set -q PYTHON_VER
     if python -c 'import pkgutil; exit(0 if pkgutil.find_loader("virtualfish") else 1)'
         eval (python -m virtualfish)
     end

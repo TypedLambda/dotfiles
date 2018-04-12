@@ -64,8 +64,9 @@ VISUAL=nvim
 export EDITOR
 export VISUAL
 
-_JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
-export _JAVA_OPTIONS
+# _JAVA_OPTIONS / JAVA_TOOL_OPTIONS
+JAVA_TOOL_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
+export JAVA_TOOL_OPTIONS
 
 
 xautolock -time 10 -locker 'convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin'&
