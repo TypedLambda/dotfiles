@@ -362,5 +362,5 @@ assign [class="Firefox" instance="DTA"] 11
 # exec /usr/local/share/chromium/chrome --profile-directory=Default --app-id=kpjhcddaofpohlbadnmnnaenmmefdbgn  
 
 
-
-exec --no-startup-id ~/.screenlayout/screenlayout.sh
+# configure current screen
+exec_always --no-startup-id ~/.screenlayout/screenlayout
