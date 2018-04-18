@@ -1,10 +1,19 @@
 #!/bin/sh
-
 dir=$HOME/.screenlayout
+
+set -e
+outputs=`xrandr |awk '/^\s/{next} $2=="connected" {print $1}'`
+
+for output in $outputs
+do
+    xrandr --output $output --auto
+done
+
 name="$dir/`xrandr --listmonitors | awk  'BEGIN{FS="[\/ \t]*" } /[0-9]:/{n = n $7 "-" $5} END{print n}'`.sh"
 
+
+
 if [ -f "$name" -a -s "$name" ] ; then 
-    echo activating "$name"
     exec "$name"
 else 
     echo new screenlayout "$name"
