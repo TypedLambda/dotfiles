@@ -46,6 +46,13 @@ xset m 1 1/1
 # Fix an issue with large image rendering via mozilla
 # export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
+SSH_ASKPASS=`which -s ssh-askpass-fullscreen`
+if [ -n "$SSH_ASKPASS" ] 
+then
+ export SSH_ASKPASS
+fi
+
+
 # export SSH_ASKPASS=/usr/local/bin/gnome-ssh-askpass2
 
 # start ssh-agent if no agent available

@@ -6,6 +6,15 @@ outputs=`xrandr |awk '/^\s/{next} $2=="connected" {print $1}'`
 
 for output in $outputs
 do
+    # disable DP chained monitors
+    if [ "`echo $output|tr -d '0-9'`"  == "DP---" ]
+    then
+        xrandr --output $output --off
+    fi
+done
+
+for output in $outputs
+do
     xrandr --output $output --auto
 done
 
