@@ -88,9 +88,11 @@ xautolock -time 10 -locker 'convert x:root -scale 10% -scale 1000%  png:- | i3lo
 #fi
 
 QT_NO_GLIB=1
-QT_QPA_PLATFORMTHEME=lthemeengine
-export QT_QPA_PLATFORMTHEME QT_NO_GLIB
+QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_NO_GLIB QT_AUTO_SCREEN_SCALE_FACTOR
 
+# QT_QPA_PLATFORMTHEME=lthemeengine
+# export QT_QPA_PLATFORMTHEME
 # QT_XKB_CONFIG_ROOT /usr/local/share/X11/xkb/
 
 # load local profile
