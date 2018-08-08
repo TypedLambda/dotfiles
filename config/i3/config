@@ -255,11 +255,9 @@ bar {
         position top
         workspace_buttons yes
         mode dock
-        # tray_output HDMI-1
-        tray_output eDP1
-        # tray_output off
+        tray_output primary 
+        #tray_output off
 
-        # tray_output auto
         colors {
                 background $base03
                 statusline $base00
@@ -344,7 +342,8 @@ exec --no-startup-id dunst -fn $smallfont
 
 # post syslog messages to dunst
 set $log /var/log/messages
-exec --no-startup-id tail -n0 -f $log | xargs -L1 -I% -- notify-send -a syslog "$log" "%"
+
+#exec --no-startup-id tail -n0 -f $log | xargs -L1 -I% -- notify-send -a syslog "$log" "%"
 
 # exec --no-startup-id pc-nettray wlan0
 
