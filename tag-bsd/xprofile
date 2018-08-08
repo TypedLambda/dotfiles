@@ -63,7 +63,13 @@ eval $(ssh-agent -s)
 # set collation to native C byte comparison
 unset LC_ALL
 LC_COLLATE="C"
-export LC_COLLATE
+LANG=en_US.UTF-8
+LC_CTYPE="de_DE.UTF-8"
+LC_TIME="de_DE.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_MONETARY="de_DE.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+export LC_COLLATE LC_CTYPE LC_TIME LC_NUMERIC LC_MONETARY LC_MESSAGES 
 
 # use neovim
 EDITOR=nvim
@@ -72,11 +78,13 @@ export EDITOR
 export VISUAL
 
 # _JAVA_OPTIONS / JAVA_TOOL_OPTIONS
-JAVA_TOOL_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp' 
+JAVA_TOOL_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp -Dsun.security.smartcardio.library=/usr/local/lib/libpcsclite.so' 
 export JAVA_TOOL_OPTIONS
 
 
 xautolock -time 10 -locker 'convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin'&
+daemon -r -t notify-log sh -c 'tail -n0 -f /var/log/messages | xargs -L1 -I% -- notify-send -a syslog "/var/log/messages" "%"'
+
 
 # if pusleaudio --check ; then
 #   pulseaudio --kill
