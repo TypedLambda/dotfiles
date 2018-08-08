@@ -247,7 +247,7 @@ augroup vimrc
         " Maps Coquille commands to <F2> (Undo), <F3> (Next), <F4> (ToCursor)
         " au FileType coq call coquille#FNMapping()
         autocmd BufRead,BufNewFile *.v set filetype=coq
-        autocmd BufRead,BufNewFile,BufEnter *wpa_supplicant.conf 
+        autocmd BufRead,BufNewFile,BufEnter *wpa_supplicant*.conf* 
             \ syntax match String /\v(psk|password|passwd)\s*\=\zs.*/ conceal cchar=X | 
             \ setl conceallevel=2 concealcursor=nc
 
