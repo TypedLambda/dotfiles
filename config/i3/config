@@ -356,6 +356,7 @@ bindsym $mod+control+space exec tracker-needle
 for_window [instance="tracker-needle"] floating enable
 for_window [class="Chromium-browser" instance="^crx_"] floating disable
 for_window [instance="arandr" ] floating enable
+for_window [instance="seafile-applet" ] floating enable
 assign [class="Firefox" instance="DTA"] 11
 
 # for_window [class="Firefox"] exec i3-msg 
