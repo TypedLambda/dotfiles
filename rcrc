@@ -1,5 +1,4 @@
-
-TAGS="bsd"
+TAGS="`uname` git laptop"
 UNDOTTED="bin"
 SYMLINK_DIRS="zsh-syntax-highlighting"
 
