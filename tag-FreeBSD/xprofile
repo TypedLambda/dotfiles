@@ -83,7 +83,7 @@ export JAVA_TOOL_OPTIONS
 
 
 xautolock -time 10 -locker 'convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin'&
-daemon -r -t notify-log sh -c 'tail -n0 -f /var/log/messages | xargs -L1 -I% -- notify-send -a syslog "/var/log/messages" "%"'
+daemon -r -t notify-log sh -c 'tail -n0 -f /var/log/messages | $HOME/bin/notify-syslog' 
 
 
 # if pusleaudio --check ; then
@@ -97,8 +97,8 @@ daemon -r -t notify-log sh -c 'tail -n0 -f /var/log/messages | xargs -L1 -I% -- 
 
 QT_NO_GLIB=1
 QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_NO_GLIB QT_AUTO_SCREEN_SCALE_FACTOR
-
+# QT_QPA_PLATFORMTHEME=qt5ct
+export QT_NO_GLIB QT_AUTO_SCREEN_SCALE_FACTOR #QT_QPA_PLATFORMTHEME
 # QT_QPA_PLATFORMTHEME=lthemeengine
 # export QT_QPA_PLATFORMTHEME
 # QT_XKB_CONFIG_ROOT /usr/local/share/X11/xkb/

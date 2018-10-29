@@ -1,0 +1,37 @@
+#!/usr/bin/awk -f
+
+function quote(s,
+    SINGLE, QSINGLE, i, X, n, ret)  # locals
+{
+    if (s == "") return "\"\"";
+
+    SINGLE = "\x27"  # single quote
+    QSINGLE = "\"\x27\""
+    n = split(s, X, SINGLE)
+
+    ret = SINGLE X[1] SINGLE
+    for (i = 2; i <= n; i++)
+        ret = ret QSINGLE SINGLE X[i] SINGLE
+
+    return ret
+}
+
+
+{ 
+    $1="";
+    $2=""; 
+    $3=""; 
+    $4=""; 
+    sub(":","",$5); 
+    subsys=$5;
+    $5="";
+    msg=$0;
+    gsub(/^[ \t]*/,"",msg);
+    gsub("<","\\&lt;",msg);
+    urgency="low"
+}
+/warning/{urgency="normal"}
+/error/{urgency="critical"}
+{
+    system("notify-send -a syslog -u " urgency " " quote(subsys) " " quote(msg) )
+}
