@@ -30,6 +30,4 @@ else
     arandr 
 fi
 
-if [ -f "$name" -a ! -s "$name" ] ; then 
-    rm -f "$name"
-fi
+find "$dir" -name '*.sh' -size 0 -type f -delete 
