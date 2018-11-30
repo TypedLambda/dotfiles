@@ -104,8 +104,8 @@ Plug 'vimoutliner/vimoutliner'
 " skip loading the nvim man functions. use vim-man
 Plug 'vim-utils/vim-man'
 let g:loaded_man = 1
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'junegunn/fzf'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
 
@@ -117,6 +117,7 @@ Plug 'zchee/deoplete-jedi'
 " Plug 'LucHermitte/VimFold4C'            " C / C++ folding 
 Plug 'rhysd/vim-clang-format'
 Plug 'lervag/vimtex'
+Plug 'chiedojohn/vim-case-convert'
 " bug workaround. 
 let g:deoplete#num_processes=1
 
@@ -225,6 +226,15 @@ cnoreabbrev <expr> man (getcmdtype() == ':' && getcmdline() =~ '^man$')? 'Man' :
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" Language Server Client mappings.
+" experimental...
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 augroup vimrc
         autocmd!
