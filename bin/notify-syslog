@@ -15,8 +15,7 @@ function quote(s,
 
     return ret
 }
-
-
+/hdacc1: Unexpected unsolicited response with tag/{next}
 { 
     $1="";
     $2=""; 
@@ -29,9 +28,10 @@ function quote(s,
     gsub(/^[ \t]*/,"",msg);
     gsub("<","\\&lt;",msg);
     urgency="low"
+    if(subsys ~ /battmond/) urgency="critical";
 }
-/warning/{urgency="normal"}
-/error/{urgency="critical"}
+/[wW][aA][rR][nN][iI][nN][gG]/{urgency="normal"}
+/[eE][rR][rR][oO][rR]/{urgency="critical"}
 {
     system("notify-send -a syslog -u " urgency " " quote(subsys) " " quote(msg) )
 }
