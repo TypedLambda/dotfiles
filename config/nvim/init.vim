@@ -349,13 +349,16 @@ end
 let g:gutentags_exclude_project_root = ["/usr/local","/usr/ports","/usr/src"]
 let g:gutentags_project_root = ["Makefile","Cargo.toml","mix.exs"]
 
+let g:polyglot_disabled = ['latex']  
+let g:python3_host_prog="python3.6"
+
 if executable("lpr-cups")
     let &printexpr = substitute(&printexpr,"'lpr'","'lpr-cups'","")
 end
 
-let g:polyglot_disabled = ['latex']  
-let g:python3_host_prog="python3.6"
-
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+end
 
 function! s:add_erlang_include_path_to_deoplete()
     if executable("erl")
