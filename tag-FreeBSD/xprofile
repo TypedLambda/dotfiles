@@ -46,7 +46,7 @@ xset m 1 1/1
 # Fix an issue with large image rendering via mozilla
 # export MOZ_DISABLE_IMAGE_OPTIMIZE=1
 
-SSH_ASKPASS=`which -s ssh-askpass-fullscreen`
+SSH_ASKPASS=`which  ssh-askpass-fullscreen || which  gnomesh-askpass2 || which  lxqt-openssh-askpass || which  ssh-askpass` 2>/dev/null 
 if [ -n "$SSH_ASKPASS" ] 
 then
  export SSH_ASKPASS
