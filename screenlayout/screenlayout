@@ -2,7 +2,7 @@
 dir=$HOME/.screenlayout
 
 set -e
-outputs=`xrandr |awk '/^\s/{next} $2=="connected" {print $1}'`
+outputs=`xrandr |awk '/^\s/{next} $2=="connected" {print $1}'|sort`
 
 for output in $outputs
 do
@@ -18,7 +18,7 @@ do
     xrandr --output $output --auto
 done
 
-name="$dir/`xrandr --listmonitors | awk  'BEGIN{FS="[\/ \t]*" } /[0-9]:/{n = n $7 "-" $5} END{print n}'`.sh"
+name="$dir/`xrandr --listmonitors | awk  'BEGIN{FS="[\/ \t]*" } /[0-9]:/{print($7, $5)}' |sort|tr ' \n' '_.'`sh"
 
 
 
