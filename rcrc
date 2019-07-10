@@ -1,4 +1,4 @@
 TAGS="`uname` git laptop"
-UNDOTTED="bin"
+UNDOTTED="bin etc"
 SYMLINK_DIRS="zsh-syntax-highlighting asdf"
 
