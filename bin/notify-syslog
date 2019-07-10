@@ -1,5 +1,6 @@
 #!/usr/bin/awk -f
 
+# shell quoting function 
 function quote(s,
     SINGLE, QSINGLE, i, X, n, ret)  # locals
 {
@@ -15,23 +16,60 @@ function quote(s,
 
     return ret
 }
-/hdacc1: Unexpected unsolicited response with tag/{next}
+
+# parse log line line
 { 
-    $1="";
-    $2=""; 
-    $3=""; 
-    $4=""; 
-    sub(":","",$5); 
+    line=$0;
+    # save fields
+    month=$1;
+    day=$2; 
+    time=$3; 
+    host=$4;; 
     subsys=$5;
-    $5="";
+    sub(":","",subsys); 
+    # clear fields to recover rest of message
+    $1=""; $2=""; $3=""; $4=""; $5="";
     msg=$0;
-    gsub(/^[ \t]*/,"",msg);
+    sub(/^[ \t]*/,"",msg);
     gsub("<","\\&lt;",msg);
-    urgency="low"
-    if(subsys ~ /battmond/) urgency="critical";
+    gsub(">","\\&gt;",msg);
+    urgency="low";
+    if(msg ~/[wW][aA][rR][nN][iI][nN][gG]/) urgency="normal";
+    if(msg ~ /[eE][rR][rR][oO][rR]/) urgency="critical";
+    device=0;
+    if(subsys ~ "kernel" && msg ~ /^[[:graph:]]*:/)
+    {
+        device=msg;
+        sub(/:.*/,"",device);
+    }
+    pid=0;
+    # extract a pid
+    if(match(subsys,/\[[[:digit:]]+\]/)) {
+        pid=substr(subsys,RSTART+1,RLENGTH-2);
+    }
 }
-/[wW][aA][rR][nN][iI][nN][gG]/{urgency="normal"}
-/[eE][rR][rR][oO][rR]/{urgency="critical"}
-{
-    system("notify-send -a syslog -u " urgency " " quote(subsys) " " quote(msg) )
+
+# resend repeated messages ignoring the count
+subsys=="syslogd" && msg~/last message repeated/ {
+    if(command) system(command);
+    # if(command) print(command);
+    next;
 }
+
+# filter notifications
+subsys ~ /wpa_supplicant/ && msg ~ /Group rekeying completed/ {ignore=1}
+device ~ /hdacc[0-9]/ && msg ~ /Unexpected unsolicited response with tag/ {ignore=1}
+subsys ~ /battmond/{urgency="critical"}
+
+# send notification if ignore=0
+!ignore {
+    subsystem=subsys
+    command="notify-send -a syslog -u " urgency " " quote(subsystem) " " quote(msg);
+    # print(line);
+    # print(month,day,time,host,subsys,device,msg);
+    # print(command);
+    # print(pid,device);
+    system(command);
+}
+# clear ignore flag after each message
+{if(ignore) command=0; ignore=0}
