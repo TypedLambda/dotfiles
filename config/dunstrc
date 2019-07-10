@@ -27,6 +27,7 @@
     startup_notification = false
     stack_duplicates = yes
     dmenu = /usr/local/bin/dmenu   
+    browser=/usr/local/bin/firefox
 
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     #icon_position = left

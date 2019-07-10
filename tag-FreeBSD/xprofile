@@ -81,8 +81,9 @@ export VISUAL
 JAVA_TOOL_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=gasp -Dsun.security.smartcardio.library=/usr/local/lib/libpcsclite.so' 
 export JAVA_TOOL_OPTIONS
 
-
-xautolock -time 10 -locker 'convert x:root -scale 10% -scale 1000%  png:- | i3lock -f -e -i /dev/stdin'&
+# lockcmd='f=$(mktemp); trap "rm -f $f" EXIT; convert x:root[5%] -scale 2000%  png:$f ;  i3lock -c "#000000" -f -e -i $f'
+# notifycmd='notify-send -a xautolock \'automatic screen lock\' \'starting i3lock in 10s\''
+# daemon -S -t xautolock xautolock -time 10 -locker "$lockcmd" -notify 10 -notifier "$notifycmd" -detectsleep -noclose &
 daemon -r -t notify-log sh -c 'tail -n0 -f /var/log/messages | $HOME/bin/notify-syslog' 
 
 
