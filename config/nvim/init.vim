@@ -31,7 +31,6 @@ Plug 'Shougo/neco-syntax'                 " sytax  completion
 Plug 'Shougo/neoinclude.vim'              " include completion
 Plug 'Shougo/neco-vim'                    " vimL completion
 Plug 'Shougo/neopairs.vim'                " close complietion pairs
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -85,10 +84,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'timonv/vim-cargo'
 " Plug 'mattreduce/vim-mix'
-Plug 'tomlion/vim-solidity'
+Plug 'TovarishFin/vim-solidity'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'Shougo/echodoc.vim'" Plug 'SirVer/ultisnips'
+Plug 'Shougo/echodoc.vim'" 
+Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-projectionist'
@@ -118,6 +118,12 @@ Plug 'zchee/deoplete-jedi'
 Plug 'rhysd/vim-clang-format'
 Plug 'lervag/vimtex'
 Plug 'chiedojohn/vim-case-convert'
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+Plug 'soywod/kronos.vim'                    " Task / Time Manager
+
+
+set clipboard=unnamed
+
 " bug workaround. 
 let g:deoplete#num_processes=1
 
@@ -259,7 +265,7 @@ augroup vimrc
         autocmd BufRead,BufNewFile *.v set filetype=coq
         autocmd BufRead,BufNewFile,BufEnter *wpa_supplicant*.conf* 
             \ syntax match String /\v(psk|password|passwd)\s*\=\zs.*/ conceal cchar=X | 
-            \ setl conceallevel=2 concealcursor=nc
+            \ setl conceallevel=2 concealcursor=nc commentstring=#%s
 
 augroup END
 
